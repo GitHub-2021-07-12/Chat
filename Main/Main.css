@@ -1,0 +1,9 @@
+:not(:defined) {
+    display: none;
+}
+
+
+body {
+    background: hsl(240, 10%, 20%);
+    margin: 0;
+}

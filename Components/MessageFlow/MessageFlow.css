@@ -1,0 +1,140 @@
+@layer init {
+    :host {
+        /* background: hsl(240, 10%, 20%); */
+        display: block;
+        height: 100dvh;
+        touch-action: none;
+    }
+
+
+    x-message {
+        color: #fff;
+        /* pointer-events: none; */
+        /* touch-action: auto; */
+
+        &::part(block) {
+            background: hsl(240, 10%, 30%);
+            pointer-events: initial;
+        }
+
+        &::part(content)::selection {
+            background-color: hsl(200, 40%, 40%);
+        }
+
+        &::part(name)::selection {
+            background-color: hsl(200, 40%, 40%);
+        }
+    }
+
+
+    #display {
+        --puck__margin_inner: 50px;
+        overflow: hidden;
+        position: relative;
+        -webkit-user-select: none;
+        user-select: none;
+
+        /* &[_swipe] { */
+        /*     -webkit-user-select: none; */
+        /*     user-select: none; */
+        /* } */
+
+        &::after {
+            background: linear-gradient(#0000, #0004);
+            bottom: 0;
+            content: '';
+            height: 12px;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+            transition: opacity 0.2s ease-out;
+        }
+        /* &[_scroll_y]:not([_scroll_y_edge='end'])::after { */
+        &[_scroll_y]:not([_scrollEdge_y_end])::after {
+            opacity: 1;
+        }
+
+        &::before {
+            background: linear-gradient(#0004, #0000);
+            content: '';
+            height: 12px;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: opacity 0.2s ease-out;
+        }
+        /* &[_scroll_y]:not([_scroll_y_edge='begin'])::before { */
+        &[_scroll_y]:not([_scrollEdge_y_begin])::before {
+            opacity: 1;
+        }
+
+        &::part(content) {
+            align-content: end;
+            display: grid;
+            gap: 10px;
+            grid-template-columns: 50%;
+            justify-content: center;
+            justify-items: start;
+            min-height: 100%;
+            padding: 10px;
+        }
+
+        &::part(puck) {
+            background: #fff4;
+        }
+    }
+
+    #repeater {
+        display: contents;
+    }
+
+    #root {
+        box-sizing: border-box;
+        display: grid;
+        grid-template-rows: auto min-content;
+        height: 100%;
+    }
+
+    #textArea {
+        --puck__margin_outer: 50px;
+        background: hsl(240, 10%, 30%);
+        border: none;
+        border-radius: 8px;
+        box-sizing: border-box;
+        color: #fff;
+        justify-self: center;
+        margin: 10px;
+        max-height: min(120px, 50dvh);
+        padding: 10px;
+        width: 50%;
+
+        &::part(input)::selection {
+            background-color: hsl(200, 40%, 40%);
+        }
+
+        &::part(puck) {
+            background: #fff4;
+        }
+    }
+
+
+    @media (max-width: 720px) {
+        #display {
+            &::part(content) {
+                grid-template-columns: 90%;
+                justify-content: unset;
+                justify-items: start;
+            }
+        }
+
+        #textArea {
+            justify-self: unset;
+            width: auto;
+        }
+    }
+}

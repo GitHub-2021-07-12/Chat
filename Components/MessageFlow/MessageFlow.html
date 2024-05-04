@@ -1,0 +1,59 @@
+<div id='root'>
+    <x-flickable id='display' disabled_ scrollEdge_size='10' scrollBars='phantom' shift_='20' snag_='x-message' sticky>
+        <x-repeater id='repeater'>
+            <template Repeater__delegate>
+                <x-message></x-message>
+
+                <script>
+                    class Manager extends Repeater.Manager {
+                        data__apply() {
+                            this._item.avatar_hue = this._model_item.avatar_hue;
+                            this._item.avatar_url = this._model_item.avatar_url;
+                            this._item.content = this._model_item.content;
+                            this._item.name = this._model_item.name;
+                        }
+
+                        init() {
+                            this.data__apply();
+                        }
+                    }
+                </script>
+            </template>
+
+            <template Repeater__model>
+                <script>
+                    [
+                        {
+                            avatar_hue: 30,
+                            avatar_url: '${url: ./0.jpg}',
+                            content: 'Message_0 Message_0 Message_0 Message_0 Message_0',
+                            name: 'Ежик в детстве',
+                        },
+                        {
+                            avatar_hue: 70,
+                            avatar_url: '${url: ../../Main/Main.svg}',
+                            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis nisl ut urna cursus commodo. Nullam rutrum pharetra gravida. Aliquam erat volutpat. Cras porttitor eros odio. Maecenas consequat elementum sem quis congue. Cras laoreet dignissim mauris, sed faucibus nisi efficitur non. Suspendisse eget augue tempor velit elementum convallis. Vivamus in cursus orci. Cras eu ipsum lacinia nisi condimentum vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
+                            name: 'POMAH',
+                        },
+                        {
+                            avatar_hue: 150,
+                            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis nisl ut urna cursus commodo. Nullam rutrum pharetra gravida. Aliquam erat volutpat.',
+                            name: 'ВАСП 4ерепушкин',
+                        },
+                        {
+                            avatar_hue: 320,
+                            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis nisl ut urna cursus commodo. Nullam rutrum pharetra gravida. Aliquam erat volutpat. Cras porttitor eros odio. Maecenas consequat elementum sem quis congue. Cras laoreet dignissim mauris, sed faucibus nisi efficitur non. Suspendisse eget augue tempor velit elementum convallis. Vivamus in cursus orci. Cras eu ipsum lacinia nisi condimentum vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis nisl ut urna cursus commodo. Nullam rutrum pharetra gravida. Aliquam erat volutpat. Cras porttitor eros odio. Maecenas consequat elementum sem quis congue. Cras laoreet dignissim mauris, sed faucibus nisi efficitur non. Suspendisse eget augue tempor velit elementum convallis. Vivamus in cursus orci. Cras eu ipsum lacinia nisi condimentum vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis nisl ut urna cursus commodo. Nullam rutrum pharetra gravida. Aliquam erat volutpat. Cras porttitor eros odio. Maecenas consequat elementum sem quis congue. Cras laoreet dignissim mauris, sed faucibus nisi efficitur non. Suspendisse eget augue tempor velit elementum convallis. Vivamus in cursus orci. Cras eu ipsum lacinia nisi condimentum vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis nisl ut urna cursus commodo. Nullam rutrum pharetra gravida. Aliquam erat volutpat. Cras porttitor eros odio. Maecenas consequat elementum sem quis congue. Cras laoreet dignissim mauris, sed faucibus nisi efficitur non. Suspendisse eget augue tempor velit elementum convallis. Vivamus in cursus orci. Cras eu ipsum lacinia nisi condimentum vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis nisl ut urna cursus commodo. Nullam rutrum pharetra gravida. Aliquam erat volutpat. Cras porttitor eros odio. Maecenas consequat elementum sem quis congue. Cras laoreet dignissim mauris, sed faucibus nisi efficitur non. Suspendisse eget augue tempor velit elementum convallis. Vivamus in cursus orci. Cras eu ipsum lacinia nisi condimentum vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
+                            name: 'Man Gust',
+                        },
+                        {
+                            avatar_hue: 220,
+                            content: 'Loremipsumdolorsitamet,consecteturadipiscingelit.Integersagittisnisluturnacursuscommodo.Nullamrutrumpharetragravida.Loremipsumdolorsitamet,consecteturadipiscingelit.Integersagittisnisluturnacursuscommodo.Nullamrutrumpharetragravida.',
+                            name: 'Мишка на Сервере',
+                        },
+                    ]
+                </script>
+            </template>
+        </x-repeater>
+    </x-flickable>
+    <x-textArea id='textArea' placeholder='Сообщение'></x-textArea>
+</div>

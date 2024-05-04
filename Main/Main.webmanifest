@@ -1,0 +1,12 @@
+{
+    "background_color": "#484",
+    "display": "standalone",
+    "icons": [{
+        "sizes": "512x512",
+        "src": "./Main.svg"
+    }],
+    "name": "Chat",
+    "orientation": "portrait",
+    "start_url": "../",
+    "theme_color": "#484"
+}
