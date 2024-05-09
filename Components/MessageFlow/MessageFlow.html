@@ -2,7 +2,7 @@
     <x-flickable id='display' disabled_ part='display' scrollEdge_size='10' scrollBars='phantom' shift_='20' snag_='x-message' sticky>
         <x-repeater id='repeater'>
             <template Repeater__delegate>
-                <x-message></x-message>
+                <x-message id_='message'></x-message>
 
                 <script>
                     class Manager extends Repeater.Manager {
