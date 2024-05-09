@@ -7,66 +7,22 @@
 
 @layer init {
     :host {
-        --_avatar_char: '';
-        --_avatar_char_color: hsl(var(--_avatar_hue), 40%, 40%);
-        --_avatar_color: hsl(var(--_avatar_hue), 80%, 60%);
-        --_avatar_hue: 0;
-        --_avatar_url: '';
-
-
-        --avatar_size: 48px;
-
+        -webkit-user-select: none;
+        /* color: red; */
         display: block;
+        /* height: 100dvh; */
+        touch-action: none;
+        user-select: none;
     }
 
 
-    #avatar {
-        background-image: linear-gradient(#fff -50%, var(--_avatar_color));
-        border-radius: 50%;
-        display: grid !important;
-        font-size: calc(var(--avatar_size) * 0.4);
-        font-weight: bold;
-        grid-template: 100% / 100% !important;
-        height: var(--avatar_size) !important;
-        place-items: center !important;
-        width: var(--avatar_size) !important;
-
-        :host([_avatar_url]) & {
-            background: center / cover no-repeat var(--_avatar_url);
-        }
-
-        :host(:not([_avatar_url])) &::after {
-            color: var(--_avatar_char_color) !important;
-            content: var(--_avatar_char) !important;
-        }
-    }
-
-    /* #block { */
-    /*     border-radius: 8px; */
-    /*     padding: 10px; */
-    /* } */
-
-    #content {
-        /* line-height: 1.5; */
-        overflow: hidden;
-        overflow-wrap: anywhere;
-        white-space: pre-wrap;
-    }
-
-    #name {
-        color: var(--_avatar_color);
-        font-size: 0.8em;
-        font-weight: bold;
-        overflow-wrap: anywhere;
+    #messageFlow {
+        /* color: red; */
+        height: 100%;
     }
 
     #root {
-        display: grid;
-        gap: 10px;
-        grid-template-columns: max-content auto;
         height: 100%;
-        place-items: start;
-        width: 100%;
     }
 }
 

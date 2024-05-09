@@ -1,5 +1,5 @@
 <div id='root'>
-    <x-flickable id='display' disabled_ scrollEdge_size='10' scrollBars='phantom' shift_='20' snag_='x-message' sticky>
+    <x-flickable id='display' disabled_ part='display' scrollEdge_size='10' scrollBars='phantom' shift_='20' snag_='x-message' sticky>
         <x-repeater id='repeater'>
             <template Repeater__delegate>
                 <x-message></x-message>
@@ -55,5 +55,11 @@
             </template>
         </x-repeater>
     </x-flickable>
-    <x-textArea id='textArea' placeholder='Сообщение'></x-textArea>
+
+    <div id='toolBar'>
+        <div id='meta_textArea'>
+            <x-textArea id='textArea' class='block' part='textArea' placeholder='Сообщение'></x-textArea>
+            <div id='button_send' class='block' part='button_send'>▶</div>
+        </div>
+    </div>
 </div>

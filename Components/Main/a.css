@@ -1,0 +1,12 @@
+@import './b.css';
+
+
+@layer {
+    body {
+        border-left: 10px solid red;
+    }
+
+    x-messageFlow {
+        color: #fff;
+    }
+}

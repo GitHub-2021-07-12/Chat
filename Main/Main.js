@@ -1,2 +1,2 @@
-import '../Components/MessageFlow/MessageFlow.js';
+import '../Components/Main/Main.js';
 // import '../ServiceWorker/Client.js';
