@@ -21,6 +21,8 @@ export class MessageFlow extends Component {
 
 
     _init() {
+        let model_items = [];
+
         for (let i = 0; i < 10; i++) {
             let avatar_hue = Math.random() * 360;
             this._elements.repeater.model.add({
@@ -28,17 +30,24 @@ export class MessageFlow extends Component {
                 content: avatar_hue,
                 name: avatar_hue,
             });
-
-            // this._elements.repeater.children[i].style.visibility = 'hidden';
-            // await this._elements.repeater.children[i]._built;
-            // this._elements.repeater.children[i].style.visibility = '';
+            // model_items.push({
+            //     avatar_hue,
+            //     content: avatar_hue,
+            //     name: avatar_hue,
+            // })
         }
+
+        // this._elements.repeater.model.add(model_items)
 
 
         this.refresh();
-        this._elements.display.scroll_y = Infinity;
+        // this._elements.display.scroll_y = Infinity;
 
         this.addEventListener('touchstart', this._on_touchStart, false);
+        this._elements.repeater.eventListeners__add({
+            add: this._repeater__on_add.bind(this),
+            define: this._repeater__on_add.bind(this),
+        });
         this._elements.textArea.eventListeners__add({
             keydown: this._textArea__on_keyDown.bind(this),
             resize: this._textArea__on_resize.bind(this),
@@ -49,7 +58,6 @@ export class MessageFlow extends Component {
 
     _message__send() {
         let message_content = this._elements.textArea.value.trim();
-        this._elements.textArea.value = '';
 
         if (message_content) {
             let avatar_hue = Math.random() * 360;
@@ -60,11 +68,24 @@ export class MessageFlow extends Component {
             });
         }
 
-        this.refresh();
+        this._elements.textArea.value = '';
+        this._elements.display.refresh();
+        // this.refresh();
     }
 
     _on_touchStart(event) {
         // event.preventDefault();
+    }
+
+    _repeater__on_add(event) {
+        // let item = event.detail.items[0];
+        // console.log(item.parentElement)
+
+        this.refresh();
+        // requestAnimationFrame(() => this.refresh());
+
+        // clearTimeout(this._timeout);
+        // this._timeout = setTimeout(() => this.refresh());
     }
 
     _textArea__on_keyDown(event) {
@@ -76,7 +97,8 @@ export class MessageFlow extends Component {
     }
 
     _textArea__on_resize() {
-        this.refresh();
+        this._elements.display.refresh();
+        // this.refresh();
     }
 
     _window__on_resize() {
@@ -89,9 +111,6 @@ export class MessageFlow extends Component {
     }
 
     refresh() {
-    // async refresh() {
-        // await this._elements.repeater.children[0]?._built;
-
         this._elements.textArea.refresh();
         this._elements.display.refresh();
     }

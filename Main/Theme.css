@@ -3,6 +3,12 @@
         display: none;
     }
 
+    /* :defined { */
+    /*     :not(&) { */
+    /*         display: none; */
+    /*     } */
+    /* } */
+
     :root {
         --Theme__accent_hue: 200;
         --Theme__background: hsl(var(--Theme__hue), 10%, 20%);
@@ -19,6 +25,16 @@
         --Theme__hue: 240;
         --Theme__selection: hsl(var(--Theme__accent_hue), 50%, 50%);
         --Theme__shadow: #0004;
+    }
+
+    :root {
+        background: var(--Theme__background);
+        color: var(--Theme__foreground);
+    }
+
+
+    body {
+        margin: 0;
     }
 
     /* :host { */
@@ -68,10 +84,7 @@
     }
 
     x-main {
-        /* height: 100dvh; */
-        /* transition: all 1s; */
-
-        &[Component__hidden] {
+        &[_building] {
             visibility: hidden;
         }
     }
@@ -80,7 +93,7 @@
         font: var(--Theme__font);
         transition: opacity 0.4s;
 
-        &[Component__hidden] {
+        &[_building] {
             opacity: 0;
         }
 
@@ -133,7 +146,7 @@
     }
 
 
-    /* [Component__hidden] { */
+    /* [_building] { */
     /*     visibility: hidden; */
     /* } */
 }

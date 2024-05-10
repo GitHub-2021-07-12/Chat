@@ -63,9 +63,9 @@
             --gap: var(--MessageFlow__gap);
 
             &::part(content) {
-                grid-template-columns: unset;
-                justify-content: unset;
-                justify-items: start;
+                grid-template-columns: 80%;
+                /* justify-content: unset; */
+                /* justify-items: start; */
             }
         }
 
