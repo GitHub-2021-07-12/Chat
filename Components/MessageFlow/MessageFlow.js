@@ -14,6 +14,11 @@ export class MessageFlow extends Component {
     static html_url = true;
     static url = import.meta.url;
 
+    static resources = {
+        arrow_send: new URL('../../Theme/Theme.svg#arrow_send', this.url),
+        // arrow_send: '../../Main/Theme.svg#arrow_send',
+    };
+
 
     static {
         this.define();

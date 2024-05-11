@@ -109,17 +109,18 @@
     }
 
     x-messageFlow {
-        --MessageFlow__button__size: calc(var(--Theme__font_lineHeight) + var(--Theme__block__gap_double) * 2);
+        --MessageFlow__button_send__size: calc(var(--Theme__font_lineHeight) + var(--Theme__block__gap_double) * 2);
         --MessageFlow__gap: var(--Theme__block__gap);
 
         &::part(button_send) {
             background: var(--Theme__block__background);
-            color: var(--Theme__selection);
             cursor: pointer;
+            fill: var(--Theme__selection);
+            padding: var(--Theme__block__gap_double);
         }
         &::part(button_send):hover {
             background: var(--Theme__selection);
-            color: var(--Theme__foreground);
+            fill: var(--Theme__foreground);
         }
     }
 

@@ -1,22 +1,30 @@
-@import '../../Main/Theme.css' layer;
+@import '../../Theme/Theme.css' layer;
 
 
 @layer init {
     :host {
-        --MessageFlow__button__size: 32px;
+        --MessageFlow__button_send__size: 32px;
         --MessageFlow__gap: 8px;
 
         display: block;
     }
 
 
+    .icon {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+
+
     #button_send {
         border-radius: 50%;
+        box-sizing: border-box;
         display: grid !important;
         grid-template: 100% / 100% !important;
-        height: var(--MessageFlow__button__size) !important;
+        height: var(--MessageFlow__button_send__size) !important;
         place-items: center !important;
-        width: var(--MessageFlow__button__size) !important;
+        width: var(--MessageFlow__button_send__size) !important;
     }
 
     #display {

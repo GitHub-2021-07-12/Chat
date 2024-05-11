@@ -59,7 +59,12 @@
     <div id='toolBar'>
         <div id='meta_textArea'>
             <x-textArea id='textArea' class='block' part='textArea' placeholder='Сообщение'></x-textArea>
-            <div id='button_send' class='block' part='button_send'>▶</div>
+
+            <div id='button_send' class='block' part='button_send'>
+                <svg class='icon'>
+                    <use href='{{resource: arrow_send}}'/>
+                </svg>
+            </div>
         </div>
     </div>
 </div>
