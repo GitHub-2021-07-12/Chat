@@ -1,2 +1,2 @@
-import '../Components/Main/Main.js';
+import '../Components/Root/Root.js';
 // import '../ServiceWorker/Client.js';

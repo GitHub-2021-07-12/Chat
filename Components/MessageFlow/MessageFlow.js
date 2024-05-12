@@ -16,7 +16,8 @@ export class MessageFlow extends Component {
 
     static resources = {
         arrow_send: new URL('../../Theme/Theme.svg#arrow_send', this.url),
-        // arrow_send: '../../Main/Theme.svg#arrow_send',
+        icon_1: new URL('0.jpg', this.url),
+        icon_2: new URL('../../Main/Main.svg', this.url),
     };
 
 

@@ -1,56 +1,66 @@
-@import '../../Theme/Theme.css' layer;
+@layer init;
+
+@import '../../Theme/Theme.css' layer(theme);
 
 
 @layer init {
     :host {
-        --_avatar_char: '';
-        --_avatar_char_color: hsl(var(--_avatar_hue), 40%, 40%);
-        --_avatar_color: hsl(var(--_avatar_hue), 80%, 60%);
-        --_avatar_hue: 0;
-        --_avatar_url: '';
+        --_Message__avatar_char: '';
+        --_Message__avatar_char_color: hsl(var(--_Message__avatar_hue), 40%, 40%);
+        --_Message__avatar_color: hsl(var(--_Message__avatar_hue), 80%, 60%);
+        --_Message__avatar_hue: 0;
+        --_Message__avatar_url: '';
 
 
-        --avatar_size: 48px;
+        --Message__avatar_size: 48px;
+        --Message__date_color: inherit;
+        --Message__gap: 8px;
 
         display: block;
     }
 
 
     #avatar {
-        background-image: linear-gradient(#fff -50%, var(--_avatar_color));
+        background-image: linear-gradient(#fff -50%, var(--_Message__avatar_color));
         border-radius: 50%;
         display: grid !important;
-        font-size: calc(var(--avatar_size) * 0.4);
+        font-size: calc(var(--Message__avatar_size) * 0.4);
         font-weight: bold;
         grid-template: 100% / 100% !important;
-        height: var(--avatar_size) !important;
+        height: var(--Message__avatar_size) !important;
         place-items: center !important;
-        width: var(--avatar_size) !important;
+        width: var(--Message__avatar_size) !important;
 
         :host([_avatar_url]) & {
-            background: center / cover no-repeat var(--_avatar_url);
+            background: center / cover no-repeat var(--_Message__avatar_url);
         }
 
         :host(:not([_avatar_url])) &::after {
-            color: var(--_avatar_char_color) !important;
-            content: var(--_avatar_char) !important;
+            color: var(--_Message__avatar_char_color) !important;
+            content: var(--_Message__avatar_char) !important;
         }
     }
 
-    /* #block { */
-    /*     border-radius: 8px; */
-    /*     padding: 10px; */
-    /* } */
+    #block {
+        display: grid;
+        gap: var(--Message__gap);
+        grid-template: min-content auto / auto min-content;
+    }
 
     #content {
-        /* line-height: 1.5; */
+        grid-column: 1 / -1;
         overflow: hidden;
         overflow-wrap: anywhere;
         white-space: pre-wrap;
     }
 
+    #date {
+        color: var(--Message__date_color);
+        font-size: 0.8em;
+    }
+
     #name {
-        color: var(--_avatar_color);
+        color: var(--_Message__avatar_color);
         font-size: 0.8em;
         font-weight: bold;
         overflow-wrap: anywhere;
@@ -58,7 +68,7 @@
 
     #root {
         display: grid;
-        gap: 10px;
+        gap: var(--Message__gap);
         grid-template-columns: max-content auto;
         height: 100%;
         place-items: start;

@@ -1,4 +1,6 @@
-@import '../../Theme/Theme.css' layer;
+@layer init;
+
+@import '../../Theme/Theme.css' layer(theme);
 
 
 @layer init {

@@ -2,7 +2,7 @@
     <x-flickable id='display' disabled_ part='display' scrollEdge_size='10' scrollBars='phantom' shift_='20' snag_='x-message' sticky>
         <x-repeater id='repeater'>
             <template Repeater__delegate>
-                <x-message id_='message'></x-message>
+                <x-message id_='message' class='ghost'></x-message>
 
                 <script>
                     class Manager extends Repeater.Manager {
@@ -25,13 +25,13 @@
                     [
                         {
                             avatar_hue: 30,
-                            avatar_url: '${url: ./0.jpg}',
+                            avatar_url: '{{resource: icon_1}}',
                             content: 'Message_0 Message_0 Message_0 Message_0 Message_0',
                             name: 'Ежик в детстве',
                         },
                         {
                             avatar_hue: 70,
-                            avatar_url: '${url: ../../Main/Main.svg}',
+                            avatar_url: '{{resource: icon_2}}',
                             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sagittis nisl ut urna cursus commodo. Nullam rutrum pharetra gravida. Aliquam erat volutpat. Cras porttitor eros odio. Maecenas consequat elementum sem quis congue. Cras laoreet dignissim mauris, sed faucibus nisi efficitur non. Suspendisse eget augue tempor velit elementum convallis. Vivamus in cursus orci. Cras eu ipsum lacinia nisi condimentum vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
                             name: 'POMAH',
                         },
@@ -60,7 +60,7 @@
         <div id='meta_textArea'>
             <x-textArea id='textArea' class='block' part='textArea' placeholder='Сообщение'></x-textArea>
 
-            <div id='button_send' class='block' part='button_send'>
+            <div id='button_send' class='button' part='button_send'>
                 <svg class='icon'>
                     <use href='{{resource: arrow_send}}'/>
                 </svg>

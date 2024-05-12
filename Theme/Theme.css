@@ -1,13 +1,7 @@
-@layer {
+@layer init {
     :not(:defined) {
         display: none;
     }
-
-    /* :defined { */
-    /*     :not(&) { */
-    /*         display: none; */
-    /*     } */
-    /* } */
 
     :root {
         --Theme__accent_hue: 200;
@@ -17,19 +11,21 @@
         --Theme__block__gap: 8px;
         --Theme__block__gap_double: calc(var(--Theme__block__gap) * 2);
         --Theme__block__radius: 8px;
+        --Theme__edge__width: 16px;
         --Theme__font: var(--Theme__font_size) / var(--Theme__font_lineHeight) var(--Theme__font_family);
         --Theme__font_family: 'Arial';
         --Theme__font_lineHeight: calc(var(--Theme__font_size) * 1.5);
         --Theme__font_size: 16px;
         --Theme__foreground: #fff;
+        --Theme__foreground_dim: hsl(var(--Theme__hue), 20%, 60%);
+        --Theme__ghost_transition: opacity 0.4s ease-out;
         --Theme__hue: 240;
         --Theme__selection: hsl(var(--Theme__accent_hue), 50%, 50%);
         --Theme__shadow: #0004;
-    }
 
-    :root {
         background: var(--Theme__background);
         color: var(--Theme__foreground);
+        font: var(--Theme__font);
     }
 
 
@@ -37,42 +33,36 @@
         margin: 0;
     }
 
-    /* :host { */
-    /*     color: red; */
-    /* } */
-
     x-flickable {
-        --puck__margin_inner: 32px;
+        --Flickable__puck__margin_inner: 32px;
         overflow: hidden;
         position: relative;
 
         &::after {
-            background: linear-gradient(#0000, var(--Theme__shadow));
-            bottom: 0;
+            background: linear-gradient(transparent, var(--Theme__shadow));
             content: '';
-            height: 12px;
-            left: 0;
+            height: var(--Theme__edge__width);
+            inset: 0;
             opacity: 0;
             pointer-events: none;
             position: absolute;
-            right: 0;
-            transition: opacity 0.2s ease-out;
+            top: auto;
+            transition: var(--Theme__ghost_transition);
         }
         &[_scroll_y]:not([_scrollEdge_y_end])::after {
             opacity: 1;
         }
 
         &::before {
-            background: linear-gradient(var(--Theme__shadow), #0000);
+            background: linear-gradient(var(--Theme__shadow), transparent);
+            bottom: auto;
             content: '';
-            height: 12px;
-            left: 0;
+            height: var(--Theme__edge__width);
+            inset: 0;
             opacity: 0;
             pointer-events: none;
             position: absolute;
-            right: 0;
-            top: 0;
-            transition: opacity 0.2s ease-out;
+            transition: var(--Theme__ghost_transition);
         }
         &[_scroll_y]:not([_scrollEdge_y_begin])::before {
             opacity: 1;
@@ -83,57 +73,22 @@
         }
     }
 
-    x-main {
-        &[_building] {
-            visibility: hidden;
-        }
-    }
-
     x-message {
-        font: var(--Theme__font);
-        transition: opacity 0.4s;
-
-        &[_building] {
-            opacity: 0;
-        }
-
-        &::part(block) {
-            background: var(--Theme__block__background);
-            border-radius: var(--Theme__block__radius);
-            padding: var(--Theme__block__gap);
-        }
-
-        &::part(name) {
-            margin-bottom: var(--Theme__block__gap);
-        }
+        --Message__date_color: var(--Theme__foreground_dim);
+        --Message__gap: var(--Theme__block__gap);
     }
 
     x-messageFlow {
         --MessageFlow__button_send__size: calc(var(--Theme__font_lineHeight) + var(--Theme__block__gap_double) * 2);
         --MessageFlow__gap: var(--Theme__block__gap);
-
-        &::part(button_send) {
-            background: var(--Theme__block__background);
-            cursor: pointer;
-            fill: var(--Theme__selection);
-            padding: var(--Theme__block__gap_double);
-        }
-        &::part(button_send):hover {
-            background: var(--Theme__selection);
-            fill: var(--Theme__foreground);
-        }
     }
 
     x-textArea {
-        --gap: var(--Theme__block__gap);
-        --puck__margin_inner: var(--Theme__block__gap);
-        --puck__margin_outer: var(--Theme__block__gap_double);
-        background: var(--Theme__block__background);
+        --TextArea__gap: var(--Theme__block__gap);
+        --TextArea__puck__margin_inner: var(--Theme__block__gap);
+        --TextArea__puck__margin_outer: var(--Theme__block__gap_double);
         border: none;
-        border-radius: var(--Theme__block__radius);
-        box-sizing: border-box;
         max-height: min(120px, 50dvh);
-        padding: var(--Theme__block__gap_double);
         width: auto;
 
         &::part(input)::selection {
@@ -147,7 +102,31 @@
     }
 
 
-    /* [_building] { */
-    /*     visibility: hidden; */
-    /* } */
+    .block {
+        background: var(--Theme__block__background);
+        border-radius: var(--Theme__block__radius);
+        padding: var(--Theme__block__gap_double);
+    }
+
+    .button {
+        background: var(--Theme__block__background);
+        border-radius: 50%;
+        cursor: pointer;
+        fill: var(--Theme__selection);
+        padding: var(--Theme__block__gap_double);
+
+        &:hover {
+            background: var(--Theme__selection);
+            fill: var(--Theme__foreground);
+        }
+    }
+
+    .ghost {
+        &[_building] {
+            opacity: 0;
+        }
+        &:not([_building]) {
+            transition: var(--Theme__ghost_transition);
+        }
+    }
 }

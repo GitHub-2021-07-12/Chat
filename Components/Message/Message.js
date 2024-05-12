@@ -24,7 +24,7 @@ export class Message extends Component {
     }
     set avatar_hue(avatar_hue) {
         this._avatar_hue = avatar_hue || 0;
-        this.style.setProperty('--_avatar_hue', this._avatar_hue);
+        this.style.setProperty('--_Message__avatar_hue', this._avatar_hue);
     }
 
     get avatar_url() {
@@ -35,10 +35,10 @@ export class Message extends Component {
         this.attribute__set('_avatar_url', !!this._avatar_url);
 
         if (this._avatar_url) {
-            this.style.setProperty('--_avatar_url', `url(${this._avatar_url})`);
+            this.style.setProperty('--_Message__avatar_url', `url(${this._avatar_url})`);
         }
         else {
-            this.style.removeProperty('--_avatar_url');
+            this.style.removeProperty('--_Message__avatar_url');
         }
 
         // this._elements.avatar.style.backgroundImage = `url(${this._avatar_url})`;
@@ -59,7 +59,7 @@ export class Message extends Component {
         this._name = name + '';
         this._avatar_char = this._name[0];
         this._elements.name.textContent = this._name;
-        this.style.setProperty('--_avatar_char', `'${this._avatar_char}'`);
+        this.style.setProperty('--_Message__avatar_char', `'${this._avatar_char}'`);
     }
 
 
