@@ -12,14 +12,8 @@
     }
 
 
-    .icon {
-        display: block;
-        height: 100%;
-        width: 100%;
-    }
 
-
-    #button_send {
+    .button_send {
         border-radius: 50%;
         box-sizing: border-box;
         display: grid !important;
@@ -29,7 +23,7 @@
         width: var(--MessageFlow__button_send__size) !important;
     }
 
-    #display {
+    .display {
         &::part(content) {
             align-content: end;
             display: grid;
@@ -42,25 +36,31 @@
         }
     }
 
-    #meta_textArea {
+    .icon {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+
+    .meta_textArea {
         align-items: end;
         display: grid;
         gap: var(--MessageFlow__gap);
         grid-template-columns: auto min-content;
     }
 
-    #repeater {
+    .repeater {
         display: contents;
     }
 
-    #root {
+    .root {
         box-sizing: border-box;
         display: grid;
         grid-template-rows: auto min-content;
         height: 100%;
     }
 
-    #toolBar {
+    .toolBar {
         padding: var(--MessageFlow__gap);
         display: grid;
         grid-template-columns: 50%;
@@ -69,7 +69,7 @@
 
 
     @media (max-width: 720px) {
-        #display {
+        .display {
             --gap: var(--MessageFlow__gap);
 
             &::part(content) {
@@ -79,7 +79,7 @@
             }
         }
 
-        #toolBar {
+        .toolBar {
             grid-template-columns: unset;
             place-content: unset;
         }

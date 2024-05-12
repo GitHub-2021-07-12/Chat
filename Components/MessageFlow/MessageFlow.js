@@ -9,6 +9,12 @@ import {Message} from '../Message/Message.js';
 export class MessageFlow extends Component {
     static _components = [Flickable, Message, Repeater, TextArea];
 
+    static _elements = {
+        display: '',
+        repeater: '',
+        textArea: '',
+    };
+
 
     static css_url = true;
     static html_url = true;

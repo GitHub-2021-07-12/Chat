@@ -102,13 +102,13 @@
     }
 
 
-    .block {
+    .Theme__block {
         background: var(--Theme__block__background);
         border-radius: var(--Theme__block__radius);
         padding: var(--Theme__block__gap_double);
     }
 
-    .button {
+    .Theme__button {
         background: var(--Theme__block__background);
         border-radius: 50%;
         cursor: pointer;
@@ -121,7 +121,7 @@
         }
     }
 
-    .ghost {
+    .Theme__ghost {
         &[_building] {
             opacity: 0;
         }

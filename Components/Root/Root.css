@@ -13,11 +13,11 @@
     }
 
 
-    #messageFlow {
+    .messageFlow {
         height: 100%;
     }
 
-    #root {
+    .root {
         height: 100%;
     }
 }

@@ -2,6 +2,12 @@ import {Component} from '/Api/Components/Component/Component.js';
 
 
 export class Message extends Component {
+    static _elements = {
+        content: '',
+        name: '',
+    };
+
+
     static css_url = true;
     static html_url = true;
     static url = import.meta.url;

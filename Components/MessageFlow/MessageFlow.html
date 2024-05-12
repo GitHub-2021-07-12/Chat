@@ -1,8 +1,8 @@
-<div id='root'>
-    <x-flickable id='display' disabled_ part='display' scrollEdge_size='10' scrollBars='phantom' shift_='20' snag_='x-message' sticky>
-        <x-repeater id='repeater'>
+<div class='root'>
+    <x-flickable class='display' disabled_ part='display' scrollEdge_size='10' scrollBars='phantom' shift_='20' snag_='x-message' sticky>
+        <x-repeater class='repeater'>
             <template Repeater__delegate>
-                <x-message id_='message' class='ghost'></x-message>
+                <x-message class='Theme__ghost'></x-message>
 
                 <script>
                     class Manager extends Repeater.Manager {
@@ -56,11 +56,11 @@
         </x-repeater>
     </x-flickable>
 
-    <div id='toolBar'>
-        <div id='meta_textArea'>
-            <x-textArea id='textArea' class='block' part='textArea' placeholder='Сообщение'></x-textArea>
+    <div class='toolBar'>
+        <div class='meta_textArea'>
+            <x-textArea class='textArea Theme__block' part='textArea' placeholder='Сообщение'></x-textArea>
 
-            <div id='button_send' class='button' part='button_send'>
+            <div class='button_send Theme__button' part='button_send'>
                 <svg class='icon'>
                     <use href='{{resource: arrow_send}}'/>
                 </svg>
