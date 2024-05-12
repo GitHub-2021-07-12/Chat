@@ -83,6 +83,11 @@
         --MessageFlow__gap: var(--Theme__block__gap);
     }
 
+    x-root {
+        inset: 0;
+        position: absolute;
+    }
+
     x-textArea {
         --TextArea__gap: var(--Theme__block__gap);
         --TextArea__puck__margin_inner: var(--Theme__block__gap);
@@ -128,5 +133,10 @@
         &:not([_building]) {
             transition: var(--Theme__ghost_transition);
         }
+    }
+
+
+    [_building] {
+        visibility: hidden;
     }
 }
