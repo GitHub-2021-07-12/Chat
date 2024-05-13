@@ -1,23 +1,34 @@
 <div class='root'>
     <x-flickable class='display' disabled_ part='display' scrollEdge_size='10' scrollBars='phantom' shift_='20' snag_='x-message' sticky>
-        <x-repeater class='repeater'>
+        <x-repeater class='repeater' interpolation='repeater'>
             <template Repeater__delegate>
-                <x-message class='Theme__ghost'></x-message>
+                <!-- <x-message class='Theme__ghost'></x-message> -->
+                <x-message
+                    class='Theme__ghost'
 
-                <script>
-                    class Manager extends Repeater.Manager {
-                        data__apply() {
-                            this._item.avatar_hue = this._model_item.avatar_hue;
-                            this._item.avatar_url = this._model_item.avatar_url;
-                            this._item.content = this._model_item.content;
-                            this._item.name = this._model_item.name;
-                        }
+                    avatar_hue='{{repeater: avatar_hue}}'
+                    avatar_url='{{repeater: avatar_url}}'
+                    date='{{repeater: date}}'
+                    name='{{repeater: name}}'
+                >
+                    {{repeater: content}}
+                </x-message>
 
-                        init() {
-                            this.data__apply();
-                        }
-                    }
-                </script>
+                <!-- <script> -->
+                <!--     class Manager extends Repeater.Manager { -->
+                <!--         data__apply() { -->
+                <!--             this._item.avatar_hue = this._model_item.avatar_hue; -->
+                <!--             this._item.avatar_url = this._model_item.avatar_url; -->
+                <!--             this._item.content = this._model_item.content; -->
+                <!--             this._item.date = this._model_item.date; -->
+                <!--             this._item.name = this._model_item.name; -->
+                <!--         } -->
+
+                <!--         init() { -->
+                <!--             this.data__apply(); -->
+                <!--         } -->
+                <!--     } -->
+                <!-- </script> -->
             </template>
 
             <template Repeater__model>
@@ -27,6 +38,7 @@
                             avatar_hue: 30,
                             avatar_url: '{{resource: icon_1}}',
                             content: 'Message_0 Message_0 Message_0 Message_0 Message_0',
+                            date: new Date(),
                             name: 'Ежик в детстве',
                         },
                         {
@@ -54,6 +66,11 @@
                 </script>
             </template>
         </x-repeater>
+
+        <x-message avatar_hue='100' date='2024-05-12T00:00' name='Message'>
+            Content
+            1
+        </x-message>
     </x-flickable>
 
     <div class='toolBar'>

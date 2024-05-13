@@ -3,6 +3,8 @@ import {Flickable} from '/Api/Components/Flickable/Flickable.js';
 import {TextArea} from '/Api/Components/TextArea/TextArea.js';
 import {Repeater} from '/Api/Components/Repeater/Repeater.js';
 
+import {Rest} from '/Api/Units/Rest/Rest.js';
+
 import {Message} from '../Message/Message.js';
 
 
@@ -22,14 +24,17 @@ export class MessageFlow extends Component {
 
     static resources = {
         arrow_send: new URL('../../Theme/Theme.svg#arrow_send', this.url),
-        icon_1: new URL('0.jpg', this.url),
-        icon_2: new URL('../../Main/Main.svg', this.url),
+        icon_1: new URL('../../Storage/Images/0.jpg', this.url),
+        icon_2: new URL('../../Main/Icon.svg', this.url),
     };
 
 
     static {
         this.define();
     }
+
+
+    _rest = new Rest(new URL('./MessageFlow.php', this.constructor.url));
 
 
     _init() {
@@ -40,6 +45,7 @@ export class MessageFlow extends Component {
             this._elements.repeater.model.add({
                 avatar_hue,
                 content: avatar_hue,
+                date: new Date(),
                 name: avatar_hue,
             });
             // model_items.push({
@@ -66,6 +72,9 @@ export class MessageFlow extends Component {
         });
 
         window.addEventListener('resize', this._window__on_resize.bind(this));
+
+
+        this._rest.call('messages__get');
     }
 
     _message__send() {

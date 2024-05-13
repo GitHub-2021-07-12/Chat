@@ -17,7 +17,7 @@
         --Theme__font_lineHeight: calc(var(--Theme__font_size) * 1.5);
         --Theme__font_size: 16px;
         --Theme__foreground: #fff;
-        --Theme__foreground_dim: hsl(var(--Theme__hue), 20%, 60%);
+        --Theme__foreground_dim: hsl(var(--Theme__hue), 10%, 60%);
         --Theme__ghost_transition: opacity 0.4s ease-out;
         --Theme__hue: 240;
         --Theme__selection: hsl(var(--Theme__accent_hue), 50%, 50%);
@@ -90,6 +90,8 @@
 
     x-textArea {
         --TextArea__gap: var(--Theme__block__gap);
+        --TextArea__placeholder_color: var(--Theme__foreground_dim);
+        --TextArea__placeholder_opacity: 1;
         --TextArea__puck__margin_inner: var(--Theme__block__gap);
         --TextArea__puck__margin_outer: var(--Theme__block__gap_double);
         border: none;

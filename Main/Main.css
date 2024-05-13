@@ -1,18 +1,1 @@
-@import './Theme.css';
-
-
-/* @layer init { */
-    /* :not(:defined) { */
-    /*     display: none; */
-    /* } */
-
-/*     :root { */
-/*         background: var(--Theme__background); */
-/*         color: var(--Theme__foreground); */
-/*     } */
-
-
-/*     body { */
-/*         margin: 0; */
-/*     } */
-/* } */
+@import '../Theme/Theme.css';

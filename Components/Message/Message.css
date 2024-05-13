@@ -31,11 +31,11 @@
         place-items: center !important;
         width: var(--Message__avatar_size) !important;
 
-        :host([_avatar_url]) & {
+        :host([avatar_url]) & {
             background: center / cover no-repeat var(--_Message__avatar_url);
         }
 
-        :host(:not([_avatar_url])) &::after {
+        :host(:not([avatar_url])) &::after {
             color: var(--_Message__avatar_char_color) !important;
             content: var(--_Message__avatar_char) !important;
         }
@@ -48,15 +48,17 @@
     }
 
     .content {
+        display: block !important;
         grid-column: 1 / -1;
         overflow: hidden;
         overflow-wrap: anywhere;
-        white-space: pre-wrap;
+        white-space: pre-line;
     }
 
     .date {
         color: var(--Message__date_color);
         font-size: 0.8em;
+        white-space: nowrap;
     }
 
     .name {
