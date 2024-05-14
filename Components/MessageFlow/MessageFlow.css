@@ -42,6 +42,14 @@
         width: 100%;
     }
 
+    .message {
+        max-width: 70%;
+
+        &[own] {
+            justify-self: end;
+        }
+    }
+
     .meta_textArea {
         align-items: end;
         display: grid;

@@ -12,6 +12,10 @@ export class Message extends Component {
         avatar_url: '',
         date: '',
         name: '',
+        own: {
+            default: 'false',
+            enum: ['true'],
+        },
         // timeStamp: {
         //     default: 0,
         //     range: [0, Infinity],
@@ -102,6 +106,13 @@ export class Message extends Component {
         this._avatar_char = this.name[0] ?? '';
         this._elements.name.textContent = this.name;
         this.style.setProperty('--_Message__avatar_char', `'${this._avatar_char}'`);
+    }
+
+    get own() {
+        return this._attributes.own;
+    }
+    set own(own) {
+        this._attribute__set('own', own);
     }
 
     // get timeStamp() {

@@ -85,7 +85,9 @@ export class MessageFlow extends Component {
             this._elements.repeater.model.add({
                 avatar_hue,
                 content: message_content,
+                date: new Date(),
                 name: avatar_hue,
+                own: true,
             });
         }
 

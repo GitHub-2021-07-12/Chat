@@ -4,12 +4,13 @@
             <template Repeater__delegate>
                 <!-- <x-message class='Theme__ghost'></x-message> -->
                 <x-message
-                    class='Theme__ghost'
+                    class='message Theme__ghost'
 
                     avatar_hue='{{repeater: avatar_hue}}'
                     avatar_url='{{repeater: avatar_url}}'
                     date='{{repeater: date}}'
                     name='{{repeater: name}}'
+                    own='{{repeater: own}}'
                 >
                     {{repeater: content}}
                 </x-message>

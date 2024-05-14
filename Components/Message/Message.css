@@ -35,6 +35,10 @@
             background: center / cover no-repeat var(--_Message__avatar_url);
         }
 
+        :host([own]) & {
+            display: none !important;
+        }
+
         :host(:not([avatar_url])) &::after {
             color: var(--_Message__avatar_char_color) !important;
             content: var(--_Message__avatar_char) !important;
@@ -66,6 +70,10 @@
         font-size: 0.8em;
         font-weight: bold;
         overflow-wrap: anywhere;
+
+        :host([own]) & {
+            display: none;
+        }
     }
 
     .root {
@@ -75,5 +83,9 @@
         height: 100%;
         place-items: start;
         width: 100%;
+
+        :host([own]) & {
+            grid-template-columns: none;
+        }
     }
 }

@@ -1,14 +1,15 @@
-create table if not exists Messages (
-    `data` text,
-    `timeStamp` real,
+create table if not exists Auth (
+    `count` int,
+    `timestamp` real,
+    `token` text,
     `user_id` int,
 
     foreign key (`user_id`)
 );
 
-create table if not exists Tokens (
+create table if not exists Messages (
     `data` text,
-    `timeStamp` real,
+    `timestamp` real,
     `user_id` int,
 
     foreign key (`user_id`)
@@ -20,7 +21,7 @@ create table if not exists Users (
     `id` int,
     `name` text,
     `password` text,
-    `timeStamp` real,
+    `timestamp` real,
 
     primary key (`id`)
 );
