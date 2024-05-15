@@ -34,7 +34,8 @@ export class MessageFlow extends Component {
     }
 
 
-    _rest = new Rest(new URL('./MessageFlow.php', this.constructor.url));
+    // _rest = new Rest(new URL('./MessageFlow.php', this.constructor.url));
+    _rest = new Rest(new URL('../../Units/Auth/Auth.php', this.constructor.url));
 
 
     _init() {
@@ -74,7 +75,9 @@ export class MessageFlow extends Component {
         window.addEventListener('resize', this._window__on_resize.bind(this));
 
 
-        this._rest.call('messages__get');
+        // this._rest.call('messages__get');
+        this._rest.call('register', 'name', 'password');
+        // this._rest.call('logIn', 'name', 'password');
     }
 
     _message__send() {

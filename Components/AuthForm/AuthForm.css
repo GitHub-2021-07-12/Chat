@@ -1,0 +1,34 @@
+@layer init;
+
+@import '../../Theme/Theme.css' layer(theme);
+
+
+@layer init {
+    :host {
+        --AuthForm__gap: 8px;
+
+        display: block;
+    }
+
+
+    .block {
+        align-items: center;
+        /* justify-items: center; */
+        display: grid;
+        gap: var(--AuthForm__gap);
+        grid-template: auto auto / min-content auto;
+    }
+
+    .button {
+        text-align: center;
+    }
+
+    .label {
+        justify-self: end;
+    }
+
+    .root {
+        display: grid;
+        gap: var(--AuthForm__gap);
+    }
+}

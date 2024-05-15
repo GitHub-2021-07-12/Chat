@@ -5,19 +5,39 @@
 
 @layer init {
     :host {
-        -webkit-user-select: none;
-        display: block;
-        /* height: 100dvh; */
-        touch-action: none;
-        user-select: none;
+        /* -webkit-user-select: none; */
+        display: grid;
+        grid-template: 100% / 100%;
+        /* touch-action: none; */
+        /* user-select: none; */
     }
 
 
+    .authForm {
+        grid-area: 1 / 1 / -1 / -1;
+        place-self: center;
+        width: 20%;
+        z-index: 1;
+    }
+
     .messageFlow {
-        height: 100%;
+        grid-area: 1 / 1 / -1 / -1;
     }
 
     .root {
-        height: 100%;
+        display: contents;
+    }
+
+
+    @media (max-width: 1600px) {
+        .authForm {
+            width: 40%;
+        }
+    }
+
+    @media (max-width: 720px) {
+        .authForm {
+            width: 80%;
+        }
     }
 }

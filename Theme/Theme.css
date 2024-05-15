@@ -12,13 +12,16 @@
         --Theme__block__gap: 8px;
         --Theme__block__gap_double: calc(var(--Theme__block__gap) * 2);
         --Theme__block__radius: 8px;
+        --Theme__button__background: hsl(var(--Theme__hue), 15%, 30%);
+        --Theme__button__background_accent: hsl(var(--Theme__accent_hue), 50%, 50%);
+        --Theme__button__foreground: hsl(var(--Theme__hue), 70%, 70%);
+        --Theme__button__foreground_accent: hsl(var(--Theme__hue), 100%, 80%);
         --Theme__edge__width: 16px;
         --Theme__font: var(--Theme__font_size) / var(--Theme__font_lineHeight) var(--Theme__font_family);
         --Theme__font_family: 'Arial';
         --Theme__font_lineHeight: calc(var(--Theme__font_size) * 1.5);
         --Theme__font_size: 16px;
         --Theme__foreground: #fff;
-        --Theme__foreground_accent: hsl(var(--Theme__accent_hue), 50%, 50%);
         --Theme__foreground_accent_dim: hsl(var(--Theme__accent_hue), 80%, 80%);
         --Theme__foreground_dim: hsl(var(--Theme__hue), 10%, 60%);
         --Theme__ghost_transition: opacity 0.4s ease-out;
@@ -34,6 +37,33 @@
 
     body {
         margin: 0;
+    }
+
+    x-authForm {
+        &::part(label) {
+            color: var(--Theme__foreground_dim);
+        }
+    }
+
+    x-edit {
+        border-color: var(--Theme__foreground_dim);
+        width: auto;
+
+        &[_focused] {
+            border-color: var(--Theme__foreground);
+        }
+
+        &::part(button) {
+            stroke: var(--Theme__foreground_dim);
+        }
+        &::part(button):hover {
+            stroke: var(--Theme__foreground);
+        }
+
+        &::part(input)::selection {
+            background-color: var(--Theme__selection);
+            font: var(--Theme__font);
+        }
     }
 
     x-flickable {
@@ -127,14 +157,17 @@
     }
 
     .Theme__button {
-        background: var(--Theme__block__background);
-        border-radius: 50%;
+        background: var(--Theme__button__background);
+        border-radius: var(--Theme__block__radius);
+        color: var(--Theme__button__foreground);
         cursor: pointer;
-        fill: var(--Theme__foreground_accent);
+        fill: var(--Theme__button__foreground);
+        font-size: 1.2em;
         padding: var(--Theme__block__gap_double);
 
         &:hover {
-            background: var(--Theme__block__background_accent);
+            background: var(--Theme__button__background_accent);
+            color: var(--Theme__foreground);
             fill: var(--Theme__foreground);
         }
     }

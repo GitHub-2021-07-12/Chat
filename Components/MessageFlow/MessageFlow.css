@@ -82,8 +82,6 @@
 
             &::part(content) {
                 grid-template-columns: 80%;
-                /* justify-content: unset; */
-                /* justify-items: start; */
             }
         }
 

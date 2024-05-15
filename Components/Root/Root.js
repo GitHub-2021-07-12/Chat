@@ -1,5 +1,6 @@
 import {Component} from '/Api/Components/Component/Component.js';
 
+import {AuthForm} from '../AuthForm/AuthForm.js';
 import {MessageFlow} from '../MessageFlow/MessageFlow.js';
 
 

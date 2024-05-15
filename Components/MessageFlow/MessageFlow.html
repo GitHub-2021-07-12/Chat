@@ -1,5 +1,5 @@
 <div class='root'>
-    <x-flickable class='display' disabled_ part='display' scrollEdge_size='10' scrollBars='phantom' shift_='20' snag_='x-message' sticky>
+    <x-flickable class='display' disabled_ part='display' scrollEdge_size='10' scrollBars='phantom' shift_='20' snag='x-message' sticky>
         <x-repeater class='repeater' interpolation='repeater'>
             <template Repeater__delegate>
                 <!-- <x-message class='Theme__ghost'></x-message> -->
@@ -67,11 +67,6 @@
                 </script>
             </template>
         </x-repeater>
-
-        <x-message avatar_hue='100' date='2024-05-12T00:00' name='Message'>
-            Content
-            1
-        </x-message>
     </x-flickable>
 
     <div class='toolBar'>
