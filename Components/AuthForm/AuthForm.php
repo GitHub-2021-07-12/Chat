@@ -15,12 +15,16 @@ class AuthForm {
     }
 
     public final function logIn($name, $password) {
-        return $this->_auth->logIn($name, $password);
+        // return $this->_auth->logIn($name, $password);
+        return $this->_auth->logIn($name, $password) ?: $this->_auth->register($name, $password);
+        // return 0 ?: 4;
+
+        // $token = $this->_auth->logIn($name, $password);
     }
 
-    public final function register($name, $password) {
-        return $this->_auth->register($name, $password);
-    }
+    // public final function register($name, $password) {
+    //     return $this->_auth->register($name, $password);
+    // }
 }
 
 

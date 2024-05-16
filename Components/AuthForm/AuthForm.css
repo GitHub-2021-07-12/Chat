@@ -17,7 +17,7 @@
         align-items: center;
         display: grid;
         gap: var(--AuthForm__gap);
-        grid-template: auto auto / min-content auto;
+        grid-template: auto auto auto / min-content auto;
     }
 
     .button {
@@ -31,5 +31,10 @@
     .root {
         display: grid;
         gap: var(--AuthForm__gap);
+    }
+
+    .trackBar_hue {
+        --TrackBar__length: auto;
+        grid-column: 2;
     }
 }
