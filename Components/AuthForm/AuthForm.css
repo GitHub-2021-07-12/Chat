@@ -7,13 +7,14 @@
     :host {
         --AuthForm__gap: 8px;
 
+        -webkit-user-select: none;
         display: block;
+        user-select: none;
     }
 
 
     .block {
         align-items: center;
-        /* justify-items: center; */
         display: grid;
         gap: var(--AuthForm__gap);
         grid-template: auto auto / min-content auto;

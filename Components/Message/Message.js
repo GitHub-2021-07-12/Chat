@@ -7,7 +7,7 @@ export class Message extends Component {
 
         avatar_hue: {
             default: 0,
-            range: [0, 360],
+            range: [0, 359],
         },
         avatar_url: '',
         date: '',

@@ -32,6 +32,8 @@
         background: var(--Theme__background);
         color: var(--Theme__foreground);
         font: var(--Theme__font);
+        /* height: 100%; */
+        overflow: hidden;
     }
 
 
@@ -40,6 +42,8 @@
     }
 
     x-authForm {
+        padding: var(--Theme__block__gap_double);
+
         &::part(label) {
             color: var(--Theme__foreground_dim);
         }
@@ -126,6 +130,7 @@
 
     x-root {
         inset: 0;
+        /* overflow: hidden; */
         position: absolute;
     }
 
