@@ -17,6 +17,7 @@ class MessageFlow {
 
     public function __construct() {
         $this->_auth = new Chat\Auth();
+        $this->_auth->id__define($token);
 
         $this->_db = new Db("sqlite:{$this->db_path}");
         $this->_db->sql_dir = $this->sql_dir;
@@ -25,7 +26,7 @@ class MessageFlow {
     public final function messages__get() {
         // return $this->db_path;
 
-        return $this->_auth->register('n', 'p', ['a' => 1]);
+        if (!$this->_auth->_id) return false;
     }
 }
 

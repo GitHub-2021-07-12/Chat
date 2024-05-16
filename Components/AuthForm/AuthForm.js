@@ -22,6 +22,24 @@ export class AuthForm extends Component {
 
 
     _init() {
+        // this.register();
+        this.logIn();
+    }
+
+
+    async logIn() {
+        let {data} = await this._rest.call('logIn', 'name', 'password');
+
+        console.log(data)
+
+
+    }
+
+    async register() {
+        let {data} = await this._rest.call('register', 'name', 'password');
+
+        console.log(data)
+
 
     }
 }
