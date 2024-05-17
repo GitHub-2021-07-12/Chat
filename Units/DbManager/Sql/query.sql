@@ -1,3 +1,3 @@
 select *
-from Tokens
-join Users on Tokens.`user_rowId` = Users.`rowId`;
+from AuthRecords
+join Users on AuthRecords.`user_rowId` = Users.`rowId`;

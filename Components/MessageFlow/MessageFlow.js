@@ -34,9 +34,9 @@ export class MessageFlow extends Component {
     }
 
 
-    // _rest = new Rest(new URL('MessageFlow.php', this.constructor.url));
-    _rest = new Rest(new URL(`${this.constructor.name}.php`, this.constructor.url));
-    // _rest = new Rest(new URL('../../Units/Auth/Auth.php', this.constructor.url));
+    // _rest = new Rest(new URL('MessageFlow.php', import.meta.url));
+    _rest = new Rest(new URL(`${this.constructor.name}.php`, import.meta.url));
+    // _rest = new Rest(new URL('../../Units/Auth/Auth.php', import.meta.url));
 
 
     _init() {

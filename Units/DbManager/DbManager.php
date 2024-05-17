@@ -12,19 +12,15 @@ class DbManager {
 
     public function __construct() {
         $this->_db = new Db("sqlite:{$this->_db_path}");
-        $this->_db->sql_dir = $this->_sql_dir;
+        $this->_db->statements_dir = $this->_sql_dir;
     }
 
     public final function init() {
-        $this->_db->exec_sql('init');
+        $this->_db->execute_raw('init');
     }
 
     public final function query() {
-        $db_statement = $this->_db->prepare_sql('query');
-        $db_statement->execute();
-        $data = $db_statement->fetchAll();
-
-        return $data;
+        return $this->_db->fetch('query');
     }
 }
 

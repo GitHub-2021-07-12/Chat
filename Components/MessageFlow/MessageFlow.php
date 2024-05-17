@@ -16,17 +16,17 @@ class MessageFlow {
 
 
     public function __construct() {
-        $this->_auth = new Chat\Auth();
+        $this->_auth = new App\Auth();
         $this->_auth->id__define($token);
 
         $this->_db = new Db("sqlite:{$this->db_path}");
-        $this->_db->sql_dir = $this->sql_dir;
+        $this->_db->statements_dir = $this->sql_dir;
     }
 
     public final function messages__get() {
-        // return $this->db_path;
-
         if (!$this->_auth->_id) return false;
+
+
     }
 }
 

@@ -11,7 +11,7 @@ class AuthForm {
 
 
     public function __construct() {
-        $this->_auth = new Chat\Auth();
+        $this->_auth = new App\Auth();
     }
 
     public final function logIn($name, $password) {
