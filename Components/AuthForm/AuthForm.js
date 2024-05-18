@@ -37,11 +37,6 @@ export class AuthForm extends Component {
         this.event__dispatch('logIn');
     }
 
-    _data__define() {
-        this._name = this._elements.edit_name.value.trim().replace(/\s+/g, ' ');
-        this._password = this._elements.edit_password.value;
-    }
-
     _init() {
         this._elements.button_logIn.addEventListener('pointerdown', this._button_logIn__on_pointerDown.bind(this));
     }

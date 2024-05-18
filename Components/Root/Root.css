@@ -17,11 +17,12 @@
         place-self: center;
     }
 
-    .messageFlow {
-    }
-
     .root {
         height: 100%;
+
+        :host([_verification]) & {
+            visibility: hidden;
+        }
 
         &::part(item) {
             display: grid;

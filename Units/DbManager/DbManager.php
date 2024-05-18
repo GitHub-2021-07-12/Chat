@@ -1,7 +1,8 @@
 <?php
 
+namespace App;
+
 require_once __dir__ . '/../../../../Api/Units/Db/Db.php';
-require_once __dir__ . '/../../../../Api/Units/Rest/Rest.php';
 
 
 class DbManager {
@@ -11,7 +12,7 @@ class DbManager {
 
 
     public function __construct() {
-        $this->_db = new Db("sqlite:{$this->_db_path}");
+        $this->_db = new \Db("sqlite:{$this->_db_path}");
         $this->_db->statements_dir = $this->_sql_dir;
     }
 
@@ -23,8 +24,3 @@ class DbManager {
         return $this->_db->fetch('query');
     }
 }
-
-
-$rest = new Rest();
-$rest->object = new DbManager();
-$rest->run();

@@ -9,6 +9,7 @@ require_once __dir__ . '/../../../../Api/Units/Db/Db.php';
 class Auth extends \Auth {
     public $db_path = __dir__ . '/../../Storage/Db/Db.sqlite';
     public $sql_dir = __dir__ . '/Sql';
+    public $token = '';
 
 
     public function __construct() {
@@ -24,5 +25,9 @@ class Auth extends \Auth {
         $data = ['avatar_hue' => rand(0, 359)];
 
         return parent::register($name, $password, $data);
+    }
+
+    public function verify(...$rest) {
+        return parent::verify($this->token);
     }
 }

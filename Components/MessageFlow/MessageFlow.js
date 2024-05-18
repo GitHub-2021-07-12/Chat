@@ -3,6 +3,7 @@ import {Flickable} from '/Api/Components/Flickable/Flickable.js';
 import {TextArea} from '/Api/Components/TextArea/TextArea.js';
 import {Repeater} from '/Api/Components/Repeater/Repeater.js';
 
+import {Auth} from '/Api/Units/Auth/Auth.js';
 import {Rest} from '/Api/Units/Rest/Rest.js';
 
 import {Message} from '../Message/Message.js';
@@ -12,6 +13,7 @@ export class MessageFlow extends Component {
     static _components = [Flickable, Message, Repeater, TextArea];
 
     static _elements = {
+        button_send: '',
         display: '',
         repeater: '',
         textArea: '',
@@ -24,8 +26,6 @@ export class MessageFlow extends Component {
 
     static resources = {
         arrow_send: new URL('../../Theme/Theme.svg#arrow_send', this.url),
-        icon_1: new URL('../../Storage/Images/0.jpg', this.url),
-        icon_2: new URL('../../Main/Icon.svg', this.url),
     };
 
 
@@ -34,15 +34,17 @@ export class MessageFlow extends Component {
     }
 
 
-    // _rest = new Rest(new URL('MessageFlow.php', import.meta.url));
-    _rest = new Rest(new URL(`${this.constructor.name}.php`, import.meta.url));
-    // _rest = new Rest(new URL('../../Units/Auth/Auth.php', import.meta.url));
+    // _auth = new Auth(new URL('../../Units/Auth/Auth__rest.php', import.meta.url));
+    _auth = new Auth();
+    _rest = new Rest(new URL(`${this.constructor.name}__rest.php`, import.meta.url));
 
+
+    _button_send__on_pointerDown() {
+        this.message__send();
+    }
 
     _init() {
-        let model_items = [];
-
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 3; i++) {
             let avatar_hue = Math.random() * 360;
             this._elements.repeater.model.add({
                 avatar_hue,
@@ -50,20 +52,14 @@ export class MessageFlow extends Component {
                 date: new Date(),
                 name: avatar_hue,
             });
-            // model_items.push({
-            //     avatar_hue,
-            //     content: avatar_hue,
-            //     name: avatar_hue,
-            // })
         }
 
-        // this._elements.repeater.model.add(model_items)
 
-
+        this._rest.data__get = () => ({token: this._auth._token});
         this.refresh();
-        // this._elements.display.scroll_y = Infinity;
 
         this.addEventListener('touchstart', this._on_touchStart, false);
+        this._elements.button_send.addEventListener('pointerdown', this._button_send__on_pointerDown.bind(this), false);
         this._elements.repeater.eventListeners__add({
             add: this._repeater__on_add.bind(this),
             define: this._repeater__on_add.bind(this),
@@ -74,11 +70,6 @@ export class MessageFlow extends Component {
         });
 
         window.addEventListener('resize', this._window__on_resize.bind(this));
-
-
-        // this._rest.call('messages__get');
-        // this._rest.call('register', 'name', 'password');
-        // this._rest.call('logIn', 'name', 'password');
     }
 
     _message__send() {
@@ -105,14 +96,7 @@ export class MessageFlow extends Component {
     }
 
     _repeater__on_add(event) {
-        // let item = event.detail.items[0];
-        // console.log(item.parentElement)
-
         this.refresh();
-        // requestAnimationFrame(() => this.refresh());
-
-        // clearTimeout(this._timeout);
-        // this._timeout = setTimeout(() => this.refresh());
     }
 
     _textArea__on_keyDown(event) {
@@ -133,8 +117,16 @@ export class MessageFlow extends Component {
     }
 
 
-    message__send(message) {
+    async message__send() {
+        let message = this._elements.textArea.value.trim();
+        this._elements.textArea.value = '';
+        this._elements.display.refresh();
 
+        if (!message) return;
+
+        let {result} = await this._rest.call('message__add', message);
+
+        console.log(result)
     }
 
     refresh() {
