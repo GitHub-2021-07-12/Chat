@@ -55,7 +55,7 @@ export class MessageFlow extends Component {
         }
 
 
-        this._rest.data__get = () => ({token: this._auth._token});
+        this._rest.data__create = () => ({token: this._auth._token});
         this.refresh();
 
         this.addEventListener('touchstart', this._on_touchStart, false);
