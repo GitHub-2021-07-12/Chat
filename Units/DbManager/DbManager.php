@@ -3,24 +3,33 @@
 namespace App;
 
 require_once __dir__ . '/../../../../Api/Units/Db/Db.php';
+require_once __dir__ . '/../../../../Api/Units/Rest/Rest.php';
 
 
-class DbManager {
+class DbManager extends \Rest {
+    static public $db_path = __dir__ . '/../../Storage/Db/Db.sqlite';
+    static public $sql_dir = __dir__ . '/Sql';
+
+
     public $_db = null;
-    public $_db_path = __dir__ . '/../../Storage/Db/Db.sqlite';
-    public $_sql_dir = __dir__ . '/Sql';
 
 
-    public function __construct() {
-        $this->_db = new \Db("sqlite:{$this->_db_path}");
-        $this->_db->statements_dir = $this->_sql_dir;
+    public function _init() {
+        $this->_db = new \Db('sqlite:' . static::$db_path);
+        $this->_db->statements_dir = static::$sql_dir;
     }
 
-    public final function init() {
+
+    public function init() {
         $this->_db->execute_raw('init');
+
+        return true;
     }
 
-    public final function query() {
+    public function query() {
         return $this->_db->fetch('query');
     }
 }
+
+
+new DbManager();

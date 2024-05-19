@@ -3,7 +3,7 @@ drop table if exists Messages;
 drop table if exists Users;
 
 create table if not exists AuthRecords (
-    `date` datetime default current_timeStamp,
+    `date` dateTime default current_timeStamp,
     `token` text,
     `user_rowId` int,
 
@@ -13,18 +13,18 @@ create table if not exists AuthRecords (
 );
 
 create table if not exists Messages (
-    `date` datetime default current_timeStamp,
+    -- `date` dateTime default (strftime('%Y-%m-%d %H:%M:%f', 'now', 'localtime')),
     `text` text,
+    `timeStamp` real,
     `user_rowId` int,
 
-    foreign key (`user_rowId`) references Users(`rowId`),
-    unique (`user_rowId`)
+    foreign key (`user_rowId`) references Users(`rowId`)
 );
 
 create table if not exists Users (
     `avatar_hue` int default 0,
     `avatar_url` text,
-    `date` datetime default current_timeStamp,
+    `date` dateTime default current_timeStamp,
     `name` text,
     `password_hash` text,
 

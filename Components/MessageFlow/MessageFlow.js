@@ -24,6 +24,21 @@ export class MessageFlow extends Component {
     static html_url = true;
     static url = import.meta.url;
 
+    static Repeater_manager = class extends Repeater.Manager {
+        data__apply() {
+            this._item.avatar_hue = this._model_item.avatar_hue;
+            this._item.avatar_url = this._model_item.avatar_url;
+            this._item.date = this._model_item.date * 1e3;
+            this._item.name = this._model_item.name;
+            this._item.own = !!this._model_item.own;
+            this._item.text = this._model_item.text;
+        }
+
+        init() {
+            this.data__apply();
+        }
+    };
+
     static resources = {
         arrow_send: new URL('../../Theme/Theme.svg#arrow_send', this.url),
     };
@@ -34,9 +49,8 @@ export class MessageFlow extends Component {
     }
 
 
-    // _auth = new Auth(new URL('../../Units/Auth/Auth__rest.php', import.meta.url));
     _auth = new Auth();
-    _rest = new Rest(new URL(`${this.constructor.name}__rest.php`, import.meta.url));
+    _rest = new Rest(new URL(`${this.constructor.name}.php`, import.meta.url));
 
 
     _button_send__on_pointerDown() {
@@ -44,21 +58,10 @@ export class MessageFlow extends Component {
     }
 
     _init() {
-        for (let i = 0; i < 3; i++) {
-            let avatar_hue = Math.random() * 360;
-            this._elements.repeater.model.add({
-                avatar_hue,
-                content: avatar_hue,
-                date: new Date(),
-                name: avatar_hue,
-            });
-        }
-
-
+        this._elements.repeater.Manager = this.constructor.Repeater_manager;
         this._rest.data__create = () => ({token: this._auth._token});
         this.refresh();
 
-        this.addEventListener('touchstart', this._on_touchStart, false);
         this._elements.button_send.addEventListener('pointerdown', this._button_send__on_pointerDown.bind(this), false);
         this._elements.repeater.eventListeners__add({
             add: this._repeater__on_add.bind(this),
@@ -68,31 +71,7 @@ export class MessageFlow extends Component {
             keydown: this._textArea__on_keyDown.bind(this),
             resize: this._textArea__on_resize.bind(this),
         });
-
         window.addEventListener('resize', this._window__on_resize.bind(this));
-    }
-
-    _message__send() {
-        let message_content = this._elements.textArea.value.trim();
-
-        if (message_content) {
-            let avatar_hue = Math.random() * 360;
-            this._elements.repeater.model.add({
-                avatar_hue,
-                content: message_content,
-                date: new Date(),
-                name: avatar_hue,
-                own: true,
-            });
-        }
-
-        this._elements.textArea.value = '';
-        this._elements.display.refresh();
-        // this.refresh();
-    }
-
-    _on_touchStart(event) {
-        // event.preventDefault();
     }
 
     _repeater__on_add(event) {
@@ -104,12 +83,11 @@ export class MessageFlow extends Component {
 
         event.preventDefault();
 
-        this._message__send();
+        this.message__send();
     }
 
     _textArea__on_resize() {
         this._elements.display.refresh();
-        // this.refresh();
     }
 
     _window__on_resize() {
@@ -118,15 +96,42 @@ export class MessageFlow extends Component {
 
 
     async message__send() {
-        let message = this._elements.textArea.value.trim();
+        let message_text = this._elements.textArea.value.trim();
         this._elements.textArea.value = '';
         this._elements.display.refresh();
 
-        if (!message) return;
+        if (!message_text) return;
 
-        let {result} = await this._rest.call('message__add', message);
+        let {result} = await this._rest.call('message__add', message_text);
 
-        console.log(result)
+        return result;
+    }
+
+    async messages__init() {
+        this._auth.token__restore();
+
+        await this.messages__load();
+        this.messages_new__load();
+
+        this.refresh();
+    }
+
+    async messages__load() {
+        let {result} = await this._rest.call('messages__get');
+
+        if (!result) return;
+
+        this._elements.repeater.model.add(result);
+    }
+
+    async messages_new__load() {
+        let {result} = await this._rest.call('messages_new__get');
+
+        if (!result) return;
+
+        this._elements.repeater.model.add(result);
+
+        this.messages_new__load();
     }
 
     refresh() {

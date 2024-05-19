@@ -12,10 +12,11 @@ export class Message extends Component {
         avatar_url: '',
         date: '',
         name: '',
-        own: {
-            default: 'false',
-            enum: ['true'],
-        },
+        own: false,
+        // own: {
+        //     default: 'false',
+        //     enum: ['true'],
+        // },
         // timeStamp: {
         //     default: 0,
         //     range: [0, Infinity],
@@ -66,13 +67,6 @@ export class Message extends Component {
         }
     }
 
-    get content() {
-        return this.textContent;
-    }
-    set content(content = '') {
-        this.textContent = content.trim?.() || content;
-    }
-
     get date() {
         return this._date;
     }
@@ -115,6 +109,13 @@ export class Message extends Component {
         this._attribute__set('own', own);
     }
 
+    get text() {
+        return this.textContent;
+    }
+    set text(text = '') {
+        this.textContent = text.trim?.() || text;
+    }
+
     // get timeStamp() {
     //     return this._attributes.timeStamp;
     // }
@@ -127,7 +128,7 @@ export class Message extends Component {
 
 
     _init() {
-        this.content = this.content;
+        this.text = this.text;
         this.props__sync();
     }
 }

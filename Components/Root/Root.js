@@ -46,16 +46,18 @@ export class Root extends Component {
 
     async _auth__verify() {
         this._verification = true;
+
         let verified = await this._auth.verify();
         this._elements.root.index = +verified;
-        this._verification = false;
 
         if (this._elements.root.index) {
-            this.refresh();
+            await this._elements.messageFlow.messages__init();
         }
         else {
             this._elements.root.animation_implicit = true;
         }
+
+        this._verification = false;
     }
 
     _init() {
@@ -67,7 +69,7 @@ export class Root extends Component {
 
     _authForm__on_logIn() {
         this._elements.root.index = 1;
-        this.refresh();
+        this._elements.messageFlow.messages__init();
     }
 
     _on_touchStart(event) {
