@@ -127,9 +127,9 @@ export class MessageFlow extends Component {
     async messages_new__load() {
         let {result} = await this._rest.call('messages_new__get');
 
-        if (!result) return;
-
-        this._elements.repeater.model.add(result);
+        if (result?.length) {
+            this._elements.repeater.model.add(result);
+        }
 
         this.messages_new__load();
     }

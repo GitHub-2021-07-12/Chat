@@ -12,6 +12,8 @@ class MessageFlow extends \Rest {
     static public $db_path = __dir__ . '/../../Storage/Db/Db.sqlite';
     static public $delay = 1e5;
     static public $sql_dir = __dir__ . '/Sql';
+    static public $timeLimit = 30;
+    static public $trace = true;
 
 
     public $_auth = null;
@@ -24,7 +26,7 @@ class MessageFlow extends \Rest {
         $this->_auth->verify();
 
         if (!$this->_auth->_id) {
-            throw new Error('Auth');
+            throw new \Error('Auth');
         }
 
         $this->_db = new \Db('sqlite:' . static::$db_path);
