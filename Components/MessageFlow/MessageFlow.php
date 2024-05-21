@@ -11,9 +11,9 @@ require_once __dir__ . '/../../Units/Auth/Auth.php';
 class MessageFlow extends \Rest {
     static public $db_path = __dir__ . '/../../Storage/Db/Db.sqlite';
     static public $delay = 1e5;
+    static public $gzip = -1;
     static public $sql_dir = __dir__ . '/Sql';
     static public $timeLimit = 30;
-    static public $trace = true;
 
 
     public $_auth = null;

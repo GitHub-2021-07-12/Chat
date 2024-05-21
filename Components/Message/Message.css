@@ -5,15 +5,16 @@
 
 @layer init {
     :host {
-        --_Message__avatar_char: '';
-        --_Message__avatar_char_color: hsl(var(--_Message__avatar_hue), 40%, 40%);
-        --_Message__avatar_color: hsl(var(--_Message__avatar_hue), 80%, 60%);
-        --_Message__avatar_hue: 0;
-        --_Message__avatar_url: '';
+        --_Message__avatar__background: hsl(var(--_Message__avatar__hue), 80%, 60%);
+        --_Message__avatar__char: '';
+        --_Message__avatar__foreground: hsl(var(--_Message__avatar__hue), 80%, 30%);
+        --_Message__avatar__hue: 0;
+        --_Message__avatar__url: '';
+        --_Message__name__color: hsl(var(--_Message__avatar__hue), 100%, 80%);
 
 
-        --Message__avatar_size: 48px;
-        --Message__date_color: inherit;
+        --Message__avatar__size: 48px;
+        --Message__date__color: inherit;
         --Message__gap: 8px;
 
         display: block;
@@ -21,34 +22,32 @@
 
 
     .avatar {
-        background-image: linear-gradient(#fff -50%, var(--_Message__avatar_color));
+        background-image: linear-gradient(#fff -50%, var(--_Message__avatar__background));
         border-radius: 50%;
         display: grid !important;
-        font-size: calc(var(--Message__avatar_size) * 0.4);
+        flex-shrink: 0;
+        font-size: calc(var(--Message__avatar__size) * 0.4);
         font-weight: bold;
         grid-template: 100% / 100% !important;
-        height: var(--Message__avatar_size) !important;
+        height: var(--Message__avatar__size) !important;
         place-items: center !important;
-        width: var(--Message__avatar_size) !important;
+        position: sticky;
+        top: 0;
+        width: var(--Message__avatar__size) !important;
 
         :host([avatar_url]) & {
-            background: center / cover no-repeat var(--_Message__avatar_url);
-        }
-
-        :host([own]) & {
-            display: none !important;
+            background: center / cover no-repeat var(--_Message__avatar__url);
         }
 
         :host(:not([avatar_url])) &::after {
-            color: var(--_Message__avatar_char_color) !important;
-            content: var(--_Message__avatar_char) !important;
+            color: var(--_Message__avatar__foreground) !important;
+            content: var(--_Message__avatar__char) !important;
         }
     }
 
     .block {
         display: grid;
         gap: var(--Message__gap);
-        grid-template: min-content auto / auto min-content;
     }
 
     .content {
@@ -60,32 +59,40 @@
     }
 
     .date {
-        color: var(--Message__date_color);
+        color: var(--Message__date__color);
         font-size: 0.8em;
         white-space: nowrap;
     }
 
+    .header {
+        display: flex;
+        gap: var(--Message__gap);
+
+        :host([own]) & {
+            flex-direction: row-reverse;
+        }
+    }
+
     .name {
-        color: var(--_Message__avatar_color);
+        color: var(--_Message__name__color);
+        flex-grow: 1;
         font-size: 0.8em;
         font-weight: bold;
         overflow-wrap: anywhere;
 
         :host([own]) & {
-            display: none;
+            text-align: end;
         }
     }
 
     .root {
-        display: grid;
+        display: flex;
         gap: var(--Message__gap);
-        grid-template-columns: max-content auto;
         height: 100%;
-        place-items: start;
         width: 100%;
 
         :host([own]) & {
-            grid-template-columns: none;
+            flex-direction: row-reverse;
         }
     }
 }

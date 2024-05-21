@@ -10,16 +10,10 @@ import {MessageFlow} from '../MessageFlow/MessageFlow.js';
 export class Root extends Component {
     static _components = [AuthForm, Leafable, MessageFlow];
 
-    static _attributes = {
-        ...super._attributes,
-
-        _verification: false,
-    };
-
     static _elements = {
         authForm: '',
+        leafable: '',
         messageFlow: '',
-        root: '',
     };
 
 
@@ -36,39 +30,29 @@ export class Root extends Component {
     _auth = new Auth(new URL('../../Units/Auth/Auth__rest.php', import.meta.url));
 
 
-    get _verification() {
-        return this._attributes._verification;
-    }
-    set _verification(verification) {
-        this._attribute__set('_verification', verification);
-    }
-
-
     async _auth__verify() {
-        this._verification = true;
-
         let verified = await this._auth.verify();
-        this._elements.root.index = +verified;
+        this._elements.leafable.index = +verified;
 
-        if (this._elements.root.index) {
+        if (this._elements.leafable.index) {
             await this._elements.messageFlow.messages__init();
         }
         else {
-            this._elements.root.animation_implicit = true;
+            this._elements.leafable.animation_implicit = true;
         }
-
-        this._verification = false;
     }
 
-    _init() {
-        this._auth__verify();
-
+    _eventListeners__define() {
         this.addEventListener('touchstart', this._on_touchStart);
         this._elements.authForm.addEventListener('logIn', this._authForm__on_logIn.bind(this));
     }
 
+    async _init() {
+        await this._auth__verify();
+    }
+
     _authForm__on_logIn() {
-        this._elements.root.index = 1;
+        this._elements.leafable.index = 1;
         this._elements.messageFlow.messages__init();
     }
 

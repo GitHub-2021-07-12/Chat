@@ -24,6 +24,8 @@
     }
 
     .display {
+        overflow: hidden;
+
         &::part(content) {
             align-content: end;
             display: grid;
@@ -43,7 +45,7 @@
     }
 
     .message {
-        max-width: 70%;
+        max-width: 80%;
 
         &[own] {
             justify-self: end;
@@ -76,7 +78,7 @@
     }
 
 
-    @media (max-width: 720px) {
+    @media (max-width: 1080px) {
         .display {
             --gap: var(--MessageFlow__gap);
 

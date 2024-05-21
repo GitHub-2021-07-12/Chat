@@ -5,10 +5,10 @@
 
 @layer init {
     :host {
-        /* -webkit-user-select: none; */
+        -webkit-user-select: none;
         display: block;
-        /* touch-action: none; */
-        /* user-select: none; */
+        touch-action: none;
+        user-select: none;
     }
 
 
@@ -17,17 +17,17 @@
         place-self: center;
     }
 
-    .root {
+    .leafable {
         height: 100%;
-
-        :host([_verification]) & {
-            visibility: hidden;
-        }
 
         &::part(item) {
             display: grid;
             grid-template: 100% / 100%;
         }
+    }
+
+    .root {
+        display: contents;
     }
 
 

@@ -4,18 +4,17 @@
     }
 
     :root {
-        --Theme__accent_hue: 200;
-        --Theme__background: hsl(var(--Theme__hue), 10%, 20%);
+        --Theme__accent_hue: 100;
+        --Theme__background: hsl(var(--Theme__hue), 5%, 20%);
         --Theme__block__background: hsl(var(--Theme__hue), 10%, 30%);
-        --Theme__block__background_accent: hsl(var(--Theme__accent_hue), 40%, 40%);
+        --Theme__block__background_accent: hsl(var(--Theme__accent_hue), 30%, 30%);
         --Theme__block__background_light: hsl(var(--Theme__hue), 10%, 50%);
         --Theme__block__gap: 8px;
         --Theme__block__gap_double: calc(var(--Theme__block__gap) * 2);
         --Theme__block__radius: 8px;
         --Theme__button__background: hsl(var(--Theme__hue), 15%, 30%);
-        --Theme__button__background_accent: hsl(var(--Theme__accent_hue), 50%, 50%);
-        --Theme__button__foreground: hsl(var(--Theme__hue), 70%, 70%);
-        --Theme__button__foreground_accent: hsl(var(--Theme__hue), 100%, 80%);
+        --Theme__button__background_accent: hsl(var(--Theme__accent_hue), 40%, 40%);
+        --Theme__button__foreground: hsl(var(--Theme__accent_hue), 60%, 60%);
         --Theme__edge__width: 16px;
         --Theme__font: var(--Theme__font_size) / var(--Theme__font_lineHeight) var(--Theme__font_family);
         --Theme__font_family: 'Arial';
@@ -24,15 +23,14 @@
         --Theme__foreground: #fff;
         --Theme__foreground_accent_dim: hsl(var(--Theme__accent_hue), 80%, 80%);
         --Theme__foreground_dim: hsl(var(--Theme__hue), 10%, 60%);
-        --Theme__ghost_transition: opacity 0.4s ease-out;
-        --Theme__hue: 240;
+        --Theme__ghost_transition: opacity 0.6s ease-out;
+        --Theme__hue: 140;
         --Theme__selection: hsl(var(--Theme__accent_hue), 50%, 50%);
         --Theme__shadow: #0004;
 
         background: var(--Theme__background);
         color: var(--Theme__foreground);
         font: var(--Theme__font);
-        /* height: 100%; */
         overflow: hidden;
     }
 
@@ -72,7 +70,6 @@
 
     x-flickable {
         --Flickable__puck__margin_inner: 32px;
-        overflow: hidden;
         position: relative;
 
         &::after {
@@ -111,15 +108,15 @@
     }
 
     x-message {
-        --Message__date_color: var(--Theme__foreground_dim);
+        --Message__date__color: var(--Theme__foreground_dim);
         --Message__gap: var(--Theme__block__gap);
+
+        &[own] {
+            --Message__date__color: var(--Theme__foreground_accent_dim);
+        }
 
         &[own]::part(block) {
             background: var(--Theme__block__background_accent);
-        }
-
-        &[own]::part(date) {
-            color: var(--Theme__foreground_accent_dim);
         }
     }
 
@@ -130,7 +127,6 @@
 
     x-root {
         inset: 0;
-        /* overflow: hidden; */
         position: absolute;
     }
 

@@ -28,10 +28,10 @@ export class MessageFlow extends Component {
         data__apply() {
             this._item.avatar_hue = this._model_item.avatar_hue;
             this._item.avatar_url = this._model_item.avatar_url;
-            this._item.date = this._model_item.date * 1e3;
             this._item.name = this._model_item.name;
             this._item.own = !!this._model_item.own;
             this._item.text = this._model_item.text;
+            this._item.timeStamp = this._model_item.timeStamp * 1e3;
         }
 
         init() {
@@ -40,7 +40,7 @@ export class MessageFlow extends Component {
     };
 
     static resources = {
-        arrow_send: new URL('../../Theme/Theme.svg#arrow_send', this.url),
+        arrow_send: new URL(`${this.name}.svg#arrow_send`, import.meta.url),
     };
 
 
@@ -125,10 +125,13 @@ export class MessageFlow extends Component {
     }
 
     async messages_new__load() {
-        let {result} = await this._rest.call('messages_new__get');
+        let {error, result} = await this._rest.call('messages_new__get');
 
         if (result?.length) {
             this._elements.repeater.model.add(result);
+        }
+        else if (error && !(error instanceof TypeError)) {
+            return;
         }
 
         this.messages_new__load();
