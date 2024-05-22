@@ -1,7 +1,6 @@
+import {Auth} from '/Api/Units/Auth/Auth.js';
 import {Component} from '/Api/Components/Component/Component.js';
 import {Leafable} from '/Api/Components/Leafable/Leafable.js';
-
-import {Auth} from '/Api/Units/Auth/Auth.js';
 
 import {AuthForm} from '../AuthForm/AuthForm.js';
 import {MessageFlow} from '../MessageFlow/MessageFlow.js';

@@ -2,8 +2,8 @@
 
 namespace App;
 
-require_once __dir__ . '/../../../../Api/Units/Auth/Auth.php';
-require_once __dir__ . '/../../../../Api/Units/Db/Db.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Api/Units/Auth/Auth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Api/Units/Db/Db.php';
 
 
 class Auth extends \Auth {
