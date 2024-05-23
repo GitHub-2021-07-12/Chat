@@ -22,10 +22,11 @@
 
 
     .avatar {
-        background-image: linear-gradient(#fff -50%, var(--_Message__avatar__background));
+        background: linear-gradient(#fff -50%, var(--_Message__avatar__background));
         border-radius: 50%;
+        color: var(--_Message__avatar__foreground) !important;
         display: grid !important;
-        flex-shrink: 0;
+        flex-shrink: 0 !important;
         font-size: calc(var(--Message__avatar__size) * 0.4);
         font-weight: bold;
         grid-template: 100% / 100% !important;
@@ -40,7 +41,6 @@
         }
 
         :host(:not([avatar_url])) &::after {
-            color: var(--_Message__avatar__foreground) !important;
             content: var(--_Message__avatar__char) !important;
         }
     }
@@ -52,7 +52,7 @@
 
     .content {
         display: block !important;
-        grid-column: 1 / -1;
+        grid-column: 1 / -1 !important;
         overflow: hidden;
         overflow-wrap: anywhere;
         white-space: pre-line;
@@ -75,7 +75,7 @@
 
     .name {
         color: var(--_Message__name__color);
-        flex-grow: 1;
+        flex-grow: 1 !important;
         font-size: 0.8em;
         font-weight: bold;
         overflow-wrap: anywhere;

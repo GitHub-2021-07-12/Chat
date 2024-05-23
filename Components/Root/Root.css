@@ -5,6 +5,9 @@
 
 @layer init {
     :host {
+        --Root__button_menu__size: 32px;
+        --Root__gap: 8px;
+
         -webkit-user-select: none;
         display: block;
         touch-action: none;
@@ -17,23 +20,51 @@
         place-self: center;
     }
 
-    .leafable {
-        height: 100%;
+    .button_menu {
+        box-sizing: border-box;
+        display: grid !important;
+        grid-template: 100% / 100% !important;
+        height: var(--Root__button_menu__size) !important;
+        place-items: center !important;
+        width: var(--Root__button_menu__size) !important;
+    }
 
+    .header {
+        display: grid;
+        grid-template-columns: 50%;
+        padding: var(--Root__gap);
+        place-content: center;
+    }
+
+    .leafable {
         &::part(item) {
             display: grid;
             grid-template: 100% / 100%;
         }
     }
 
+    .meta_caption {
+        align-items: center;
+        display: grid;
+        gap: var(--Root__gap);
+        grid-template-columns: auto min-content;
+    }
+
     .root {
-        display: contents;
+        display: grid;
+        grid-template-rows: min-content auto;
+        height: 100%;
     }
 
 
-    @media (max-width: 720px) {
+    @media (max-width: 1080px) {
         .authForm {
             justify-self: unset;
+        }
+
+        .header {
+            grid-template-columns: unset;
+            place-content: unset;
         }
     }
 }

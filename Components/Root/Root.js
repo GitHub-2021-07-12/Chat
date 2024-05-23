@@ -20,6 +20,10 @@ export class Root extends Component {
     static html_url = true;
     static url = import.meta.url;
 
+    static resources = {
+        menu: new URL(`${this.name}.svg#menu`, import.meta.url),
+    };
+
 
     static {
         this.define();

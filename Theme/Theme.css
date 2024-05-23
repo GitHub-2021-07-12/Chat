@@ -4,6 +4,9 @@
     }
 
     :root {
+        --_Theme__font_lineHeight: calc(var(--Theme__font_size) * var(--Theme__font_lineHeight));
+
+
         --Theme__accent_hue: 180;
         --Theme__background: hsl(var(--Theme__hue), 5%, 20%);
         --Theme__block__background: hsl(var(--Theme__hue), 10%, 30%);
@@ -18,7 +21,7 @@
         --Theme__edge__width: 16px;
         --Theme__font: var(--Theme__font_size) / var(--Theme__font_lineHeight) var(--Theme__font_family);
         --Theme__font_family: 'Arial';
-        --Theme__font_lineHeight: calc(var(--Theme__font_size) * 1.5);
+        --Theme__font_lineHeight: 1.5;
         --Theme__font_size: 16px;
         --Theme__foreground: #fff;
         --Theme__foreground_accent_dim: hsl(var(--Theme__accent_hue), 80%, 80%);
@@ -64,7 +67,6 @@
 
         &::part(input)::selection {
             background-color: var(--Theme__selection);
-            font: var(--Theme__font);
         }
     }
 
@@ -121,13 +123,19 @@
     }
 
     x-messageFlow {
-        --MessageFlow__button_send__size: calc(var(--Theme__font_lineHeight) + var(--Theme__block__gap_double) * 2);
+        --MessageFlow__button_send__size: calc(var(--_Theme__font_lineHeight) + var(--Theme__block__gap_double) * 2);
         --MessageFlow__gap: var(--Theme__block__gap);
     }
 
     x-root {
+        --Root__button_menu__size: calc(var(--_Theme__font_lineHeight) + var(--Theme__block__gap_double) * 2);
+        --Root__gap: var(--Theme__block__gap);
         inset: 0;
         position: absolute;
+
+        &::part(header) {
+            font-size: 2em;
+        }
     }
 
     x-textArea {
@@ -142,7 +150,6 @@
 
         &::part(input)::selection {
             background-color: var(--Theme__selection);
-            font: var(--Theme__font);
         }
 
         &::part(puck) {
@@ -180,6 +187,12 @@
         &:not([_building]) {
             transition: var(--Theme__ghost_transition);
         }
+    }
+
+    .Theme__icon {
+        display: block;
+        height: 100%;
+        width: 100%;
     }
 
 

@@ -56,12 +56,8 @@ export class MessageFlow extends Component {
         this.message__send();
     }
 
-    _init() {
-        this._elements.repeater.Manager = this.constructor.Repeater_manager;
-        this._rest.data__create = () => ({token: this._auth._token});
-        this.refresh();
-
-        this._elements.button_send.addEventListener('pointerdown', this._button_send__on_pointerDown.bind(this), false);
+    _eventListeners__define() {
+        this._elements.button_send.addEventListener('pointerdown', this._button_send__on_pointerDown.bind(this));
         this._elements.repeater.eventListeners__add({
             add: this._repeater__on_add.bind(this),
             define: this._repeater__on_add.bind(this),
@@ -71,6 +67,12 @@ export class MessageFlow extends Component {
             resize: this._textArea__on_resize.bind(this),
         });
         window.addEventListener('resize', this._window__on_resize.bind(this));
+    }
+
+    _init() {
+        this._elements.repeater.Manager = this.constructor.Repeater_manager;
+        this._rest.data__create = () => ({token: this._auth._token});
+        this.refresh();
     }
 
     _repeater__on_add(event) {

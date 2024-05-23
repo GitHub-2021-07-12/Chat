@@ -36,7 +36,7 @@ export class AuthForm extends Component {
         this.event__dispatch('logIn');
     }
 
-    _init() {
+    _eventListeners__define() {
         this._elements.button_logIn.addEventListener('pointerdown', this._button_logIn__on_pointerDown.bind(this));
     }
 
