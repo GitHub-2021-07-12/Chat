@@ -51,7 +51,9 @@
     }
 
     x-edit {
+        --Edit__padding: var(--Theme__block__gap_double);
         border-color: var(--Theme__foreground_dim);
+        border-radius: var(--Theme__block__radius);
         width: auto;
 
         &[_focused] {
@@ -130,8 +132,10 @@
     x-root {
         --Root__button_menu__size: calc(var(--_Theme__font_lineHeight) + var(--Theme__block__gap_double) * 2);
         --Root__gap: var(--Theme__block__gap);
-        inset: 0;
-        position: absolute;
+        /* inset: 0; */
+        /* position: absolute; */
+        position: relative;
+        height: 100dvh;
 
         &::part(header) {
             font-size: 2em;
@@ -140,6 +144,7 @@
 
     x-textArea {
         --TextArea__gap: var(--Theme__block__gap);
+        --TextArea__padding: var(--Theme__block__gap_double);
         --TextArea__placeholder_color: var(--Theme__foreground_dim);
         --TextArea__placeholder_opacity: 1;
         --TextArea__puck__margin_inner: var(--Theme__block__gap);
@@ -155,6 +160,11 @@
         &::part(puck) {
             background: var(--Theme__block__background_light);
         }
+
+        &::part(scrollBar) {
+            --TrackBar__padding: 0px;
+            --TrackBar__width: 4px;
+        }
     }
 
 
@@ -167,6 +177,7 @@
     .Theme__button {
         background: var(--Theme__button__background);
         border-radius: var(--Theme__block__radius);
+        box-sizing: border-box;
         color: var(--Theme__button__foreground);
         cursor: pointer;
         fill: var(--Theme__button__foreground);

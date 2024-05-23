@@ -46,12 +46,19 @@ export class Root extends Component {
     }
 
     _eventListeners__define() {
-        this.addEventListener('touchstart', this._on_touchStart);
+        // this.addEventListener('touchmove', this._on_touchMove, {passive: false});
+        this.addEventListener('touchstart', this._on_touchStart, {passive: false});
         this._elements.authForm.addEventListener('logIn', this._authForm__on_logIn.bind(this));
     }
 
     async _init() {
         await this._auth__verify();
+
+        visualViewport.onresize = visualViewport.onscroll = () => {
+            this.style.height = visualViewport.height + 'px';
+            this.style.top = visualViewport.offsetTop + 'px';
+            this.refresh();
+        };
     }
 
     _authForm__on_logIn() {
@@ -59,8 +66,12 @@ export class Root extends Component {
         this._elements.messageFlow.messages__init();
     }
 
+    _on_touchMove(event) {
+        event.preventDefault();
+    }
+
     _on_touchStart(event) {
-        // event.preventDefault();
+        event.preventDefault();
     }
 
 

@@ -14,7 +14,6 @@
 
 
     .button_send {
-        box-sizing: border-box;
         display: grid !important;
         grid-template: 100% / 100% !important;
         height: var(--MessageFlow__button_send__size) !important;
@@ -44,7 +43,7 @@
     }
 
     .message {
-        max-width: 80%;
+        max-width: 90%;
 
         &[own] {
             justify-self: end;
@@ -63,7 +62,7 @@
     }
 
     .root {
-        box-sizing: border-box;
+        /* box-sizing: border-box; */
         display: grid;
         grid-template-rows: auto min-content;
         height: 100%;
@@ -82,7 +81,7 @@
             --gap: var(--MessageFlow__gap);
 
             &::part(content) {
-                grid-template-columns: 80%;
+                grid-template-columns: 100%;
             }
         }
 

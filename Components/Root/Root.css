@@ -21,7 +21,6 @@
     }
 
     .button_menu {
-        box-sizing: border-box;
         display: grid !important;
         grid-template: 100% / 100% !important;
         height: var(--Root__button_menu__size) !important;
@@ -34,6 +33,7 @@
         grid-template-columns: 50%;
         padding: var(--Root__gap);
         place-content: center;
+        text-align: center;
     }
 
     .leafable {

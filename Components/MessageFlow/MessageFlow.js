@@ -80,7 +80,7 @@ export class MessageFlow extends Component {
     }
 
     _textArea__on_keyDown(event) {
-        if (!event.shiftKey || event.key != 'Enter') return;
+        if (!event.ctrlKey || event.key != 'Enter') return;
 
         event.preventDefault();
 
