@@ -132,9 +132,6 @@
     x-root {
         --Root__button_menu__size: calc(var(--_Theme__font_lineHeight) + var(--Theme__block__gap_double) * 2);
         --Root__gap: var(--Theme__block__gap);
-        /* inset: 0; */
-        /* position: absolute; */
-        position: relative;
         height: 100dvh;
 
         &::part(header) {

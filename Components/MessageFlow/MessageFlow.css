@@ -22,6 +22,7 @@
     }
 
     .display {
+        --Flickable__scrollBar__width: var(--MessageFlow__gap);
         overflow: hidden;
 
         &::part(content) {
@@ -33,6 +34,7 @@
             justify-items: start;
             min-height: 100%;
             padding: var(--MessageFlow__gap);
+            padding-right: calc(var(--MessageFlow__gap) * 2);
         }
     }
 
@@ -62,7 +64,6 @@
     }
 
     .root {
-        /* box-sizing: border-box; */
         display: grid;
         grid-template-rows: auto min-content;
         height: 100%;
@@ -78,8 +79,6 @@
 
     @media (max-width: 1080px) {
         .display {
-            --gap: var(--MessageFlow__gap);
-
             &::part(content) {
                 grid-template-columns: 100%;
             }
