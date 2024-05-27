@@ -86,6 +86,7 @@
             position: absolute;
             top: auto;
             transition: var(--Theme__ghost_transition);
+            z-index: 1;
         }
         &[_scroll_y]:not([_scrollEdge_y_end])::after {
             opacity: 1;
@@ -101,6 +102,7 @@
             pointer-events: none;
             position: absolute;
             transition: var(--Theme__ghost_transition);
+            z-index: 1;
         }
         &[_scroll_y]:not([_scrollEdge_y_begin])::before {
             opacity: 1;

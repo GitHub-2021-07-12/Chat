@@ -106,10 +106,10 @@ export class Message extends Component {
     }
 
     get text() {
-        return this.textContent;
+        return this.innerHTML;
     }
     set text(text = '') {
-        this.textContent = text.trim?.() || text;
+        this.innerHTML = text.trim?.() || text;
     }
 
     get timeStamp() {
