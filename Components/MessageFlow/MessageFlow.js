@@ -33,8 +33,15 @@ export class MessageFlow extends Component {
             this._item.timeStamp = this._model_item.timeStamp * 1e3;
         }
 
-        init() {
+        async init() {
             this.data__apply();
+
+            // await this._item._built;
+
+            // let images = this._item.querySelectorAll('img');
+            // images.forEach((item) => item.hidden = true);
+            // await this._item.resources__await(images);
+            // images.forEach((item) => item.hidden = false);
         }
     };
 
@@ -75,7 +82,14 @@ export class MessageFlow extends Component {
         this.refresh();
     }
 
-    _repeater__on_add(event) {
+    async _repeater__on_add(event) {
+        // for (let item of event.detail.items) {
+        //     let images = item.querySelectorAll('img');
+        //     images.forEach((item) => item.hidden = true);
+        //     await item.resources__await(images);
+        //     images.forEach((item) => item.hidden = false);
+        // }
+
         this.refresh();
     }
 

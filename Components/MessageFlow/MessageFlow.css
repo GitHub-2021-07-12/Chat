@@ -73,6 +73,7 @@
         padding: var(--MessageFlow__gap);
         display: grid;
         grid-template-columns: 50%;
+        padding-right: calc(var(--MessageFlow__gap) * 2);
         place-content: center;
     }
 

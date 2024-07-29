@@ -1,0 +1,21 @@
+<link href='{{resource: theme}}' rel='stylesheet'>
+
+<div class='root'>
+    <input class='input' part='input' size='1'>
+
+    <div class='button_clear button' part='button button_clear'>
+        <slot name='button_clear'>
+            <x-svg class='icon' url='{{resource: button_clear}}'></x-svg>
+        </slot>
+    </div>
+
+    <div class='button_mask button' part='button button_mask'>
+        <slot name='button_mask__off'>
+            <x-svg class='icon' url='{{resource: button_mask__off}}'></x-svg>
+        </slot>
+
+        <slot name='button_mask__on'>
+            <x-svg class='icon' url='{{resource: button_mask__on}}'></x-svg>
+        </slot>
+    </div>
+</div>

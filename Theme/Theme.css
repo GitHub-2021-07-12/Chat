@@ -88,7 +88,7 @@
             transition: var(--Theme__ghost_transition);
             z-index: 1;
         }
-        &[_scroll_y]:not([_scrollEdge_y_end])::after {
+        &[_scroll_height]:not([_scrollEdge_y_end])::after {
             opacity: 1;
         }
 
@@ -104,7 +104,7 @@
             transition: var(--Theme__ghost_transition);
             z-index: 1;
         }
-        &[_scroll_y]:not([_scrollEdge_y_begin])::before {
+        &[_scroll_height]:not([_scrollEdge_y_begin])::before {
             opacity: 1;
         }
 
@@ -146,11 +146,15 @@
         --TextArea__padding: var(--Theme__block__gap_double);
         --TextArea__placeholder_color: var(--Theme__foreground_dim);
         --TextArea__placeholder_opacity: 1;
-        --TextArea__puck__margin_inner: var(--Theme__block__gap);
-        --TextArea__puck__margin_outer: var(--Theme__block__gap_double);
         border: none;
         max-height: min(120px, 50dvh);
         width: auto;
+
+        &::part(flickable) {
+            --Flickable__puck__margin_inner: var(--Theme__block__gap);
+            --Flickable__puck__margin_outer: var(--Theme__block__gap_double);
+            --Flickable__scrollBar__width: 4px;
+        }
 
         &::part(input)::selection {
             background-color: var(--Theme__selection);
@@ -162,7 +166,6 @@
 
         &::part(scrollBar) {
             --TrackBar__padding: 0px;
-            --TrackBar__width: 4px;
         }
     }
 
