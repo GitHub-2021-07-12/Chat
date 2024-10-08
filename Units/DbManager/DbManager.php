@@ -2,8 +2,8 @@
 
 namespace App;
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Api/Units/Db/Db.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Api/Units/Rest/Rest.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Apps/Chat/Api/Units/Db/Db.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Apps/Chat/Api/Units/Rest/Rest.php';
 
 
 class DbManager extends \Rest {

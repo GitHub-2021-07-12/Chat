@@ -1,9 +1,9 @@
-import {Auth} from '/Api/Units/Auth/Auth.js';
-import {Component} from '/Api/Components/Component/Component.js';
-import {Flickable} from '/Api/Components/Flickable/Flickable.js';
-import {Repeater} from '/Api/Components/Repeater/Repeater.js';
-import {Rest} from '/Api/Units/Rest/Rest.js';
-import {TextArea} from '/Api/Components/TextArea/TextArea.js';
+import {Auth} from '../../Api/Units/Auth/Auth.js';
+import {Component} from '../../Api/Components/Component/Component.js';
+import {Flickable} from '../../Api/Components/Flickable/Flickable.js';
+import {Repeater} from '../../Api/Components/Repeater/Repeater.js';
+import {Rest} from '../../Api/Units/Rest/Rest.js';
+import {TextArea} from '../../Api/Components/TextArea/TextArea.js';
 
 import {Message} from '../Message/Message.js';
 

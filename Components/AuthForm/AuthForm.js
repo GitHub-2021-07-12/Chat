@@ -1,6 +1,6 @@
-import {Auth} from '/Api/Units/Auth/Auth.js';
-import {Component} from '/Api/Components/Component/Component.js';
-import {Edit} from '/Api/Components/Edit/Edit.js';
+import {Auth} from '../../Api/Units/Auth/Auth.js';
+import {Component} from '../../Api/Components/Component/Component.js';
+import {Edit} from '../../Api/Components/Edit/Edit.js';
 
 
 export class AuthForm extends Component {

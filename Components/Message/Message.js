@@ -1,4 +1,4 @@
-import {Component} from '/Api/Components/Component/Component.js';
+import {Component} from '../../Api/Components/Component/Component.js';
 
 
 export class Message extends Component {
